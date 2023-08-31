@@ -1,0 +1,14 @@
+.container{
+    border: 1px solid red;
+}
+.signupHeader{
+    padding: 10px;
+    border-bottom: 1px solid grey;
+}
+#formContainer{
+    padding: 10px;
+}
+.maleRadio, .femaleRadio, .otherRadio{
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+}
