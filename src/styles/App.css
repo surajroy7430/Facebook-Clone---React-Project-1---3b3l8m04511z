@@ -1,5 +1,7 @@
 .container{
     border: 1px solid red;
+    box-shadow: 10px;
+    border-radius: 2px;
 }
 .signupHeader{
     padding: 10px;

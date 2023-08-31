@@ -35,7 +35,7 @@ const SignUp = () => {
   return (
     <div>
         <CssBaseline />
-        <Container maxWidth="sm" align='center' className='container'>
+        <Container maxWidth="xs" align='center' className='container'>
             <div align="left" className='signupHeader'>
                 <Typography variant='h4'>Sign Up</Typography>
                 <Typography variant='p'>It's quick and easy.</Typography>
