@@ -16,7 +16,7 @@ import {
 const SignUp = () => {
     
   return (
-    <div>
+    <div id='signup-container'>
         <CssBaseline />
         <Container maxWidth="xs" align='center' className='container'>
             <div align="left" className='signupHeader'>
@@ -28,7 +28,6 @@ const SignUp = () => {
                     <Grid item xs={12} sm={6}>
                         <TextField 
                             label=""
-                            focused
                             fullWidth
                             placeholder='First Name'
                         />
@@ -57,7 +56,7 @@ const SignUp = () => {
                     </Grid>
                     <Grid item xs={12}>
                         <FormLabel align='left' component='legend'>Date of Birth</FormLabel>
-                        <TextField type='date' />
+                        <TextField fullWidth type='date' />
                     </Grid>
                     <Grid item xs={12}>
                         <FormControl component="fieldset">
