@@ -1,39 +1,7 @@
-#main{
-    background-color: lightblue;
+*{
+    margin: 0;
+    padding: 0;
 }
-#signup-container{
-    border: 2px solid black;
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 100%;
-    max-width: 100%;
-    min-height: 100%;
-    max-height: 110%;
-    z-index: 9;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transform-origin: 50% 50%;
-    background-color: rgb(255, 255, 255, 0.5);
-    overflow: hidden;
-}
-.container{
-    box-shadow: 3px;
-    background-color: lightgray;
-}
-.signupHeader{
-    padding: 10px;
-    border-bottom: 1px solid grey;
-}
-#formContainer{
-    padding: 10px;
-}
-.maleRadio, .femaleRadio, .otherRadio{
-    border: 1px solid black;
-    border-radius: 3px;
-    gap: 25px;
-    padding-left: 5px;
+body{
+    font-family: Helvetica, Arial, sans-serif;
 }

@@ -1,0 +1,128 @@
+#login{
+    background-color: #f0f2f5;
+    height: 100vh;
+    width: auto;
+    display: flex;
+    align-items: center;
+}
+.logo-info{
+    padding: 112px 0 16px;
+}
+.fb-logo{
+    height: 106px;
+}
+.logo-info h2 {
+    font-size: 24px;
+    line-height: 28px;
+    width: auto;
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    padding: 0 0 20px;
+    margin: 0;
+    color: #1c1e21;
+}
+.login-outer{
+    margin: 10px;
+}
+.login-container{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    /* height: 456px; */
+    width: 396px;
+    text-align: center;
+    margin: 40px 0 0;
+    padding: 20px 0 28px;
+    border: 1px solid #dddfe2;
+    border-radius: 8px;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1), 
+        0 8px 16px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+input{
+    background-color: white;
+    color: #1d2129;
+    height: 50px;
+    width: 303px;
+    outline: none;
+    border-radius: 5px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #dddfe2;
+    line-height: 1rem;
+    font-size: 17px;
+    vertical-align: middle;
+}
+input::-webkit-input-placeholder {
+    font-size: 17px;
+    color: rgb(128, 128, 128, 0.8);
+    padding-left: 0;
+}
+.login-button{
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    position: relative;
+    text-align: center;
+    text-shadow: none;
+    vertical-align: middle;
+    font-weight: bold;
+    justify-content: center;
+    background-color: #1877f2;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    line-height: 48px;
+    padding: 0 16px;
+    width: 332px;
+    cursor: pointer;
+}
+.forgotten {
+    display: block;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 20px;
+    color: #1877f2;
+    border-bottom: 1px solid #dddfe2;
+}
+.forgotten a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.to-signup {
+    display: inline-block;
+    white-space: inherit;
+    position: relative;
+    text-align: center;
+    text-shadow: none;
+    font-weight: bold;
+    vertical-align: middle;
+    justify-content: center;
+    margin-top: 20px;
+    background-color: #42b72a;
+    border: none;
+    border-radius: 6px;
+    font-size: 17px;
+    line-height: 48px;
+    padding: 0 16px;
+    cursor: pointer;
+}
+.to-signup:hover{
+    background-color: #3ba526;
+}
+.create-page{
+    display: flex;
+    color: #1c1e21;
+    font-size: 14px;
+    padding: 28px;
+    text-align: center;
+}
+.create-page a{
+    font-weight: bold;
+}
+.create-page a:hover{
+    text-decoration: underline;
+}
