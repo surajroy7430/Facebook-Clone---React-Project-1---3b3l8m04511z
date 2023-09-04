@@ -1,38 +1,49 @@
-#login{
+#main {
     background-color: #f0f2f5;
-    height: 100vh;
-    width: auto;
+    padding-top: 42px;
+    padding-bottom: 112px;
+    min-width: 500px;
+}
+#login{
     display: flex;
     align-items: center;
+    margin: 0 auto;
+    padding: 20px 0;
+    position: relative;
+    width: 980px;
 }
-.logo-info{
-    padding: 112px 0 16px;
+.logo{
+    height: 106px;
+    margin: -28px;
 }
 .fb-logo{
-    height: 106px;
+    padding-bottom: 16px;
+    box-sizing: border-box;
+}
+.logo-info{
+    padding-right: 76px;
+    padding-bottom: 80px;
+    box-sizing: border-box;
 }
 .logo-info h2 {
-    font-size: 24px;
-    line-height: 28px;
-    width: auto;
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    line-height: 32px;
     font-weight: normal;
-    padding: 0 0 20px;
+    width: 500px;
     margin: 0;
     color: #1c1e21;
 }
 .login-outer{
-    margin: 10px;
+    vertical-align: top;
 }
 .login-container{
-    display: flex;
-    flex-direction: column;
     background-color: #fff;
-    /* height: 456px; */
     width: 396px;
     text-align: center;
     margin: 40px 0 0;
-    padding: 20px 0 28px;
+    padding-bottom: 24px;
+    padding-top: 10px;
     border: 1px solid #dddfe2;
     border-radius: 8px;
     box-shadow: 
@@ -40,15 +51,19 @@
         0 8px 16px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
 }
+.input-field{
+    padding: 6px 0;
+    width: 364px;
+    margin: auto;
+}
 input{
     background-color: white;
     color: #1d2129;
-    height: 50px;
-    width: 303px;
+    height: 22px;
+    width: 330px;
     outline: none;
-    border-radius: 5px;
-    padding-left: 20px;
-    margin-bottom: 10px;
+    border-radius: 6px;
+    padding: 14px 16px;
     border: 1px solid #dddfe2;
     line-height: 1rem;
     font-size: 17px;
@@ -59,16 +74,15 @@ input::-webkit-input-placeholder {
     color: rgb(128, 128, 128, 0.8);
     padding-left: 0;
 }
+.submit-button{
+    padding-top: 10px;
+}
 .login-button{
-    display: inline-block;
-    white-space: nowrap;
-    text-decoration: none;
     position: relative;
     text-align: center;
     text-shadow: none;
     vertical-align: middle;
     font-weight: bold;
-    justify-content: center;
     background-color: #1877f2;
     color: #fff;
     border: none;
@@ -77,22 +91,34 @@ input::-webkit-input-placeholder {
     line-height: 48px;
     padding: 0 16px;
     width: 332px;
+    box-sizing: content-box;
     cursor: pointer;
 }
 .forgotten {
-    display: block;
     text-align: center;
-    font-size: 17px;
+    /* border-bottom: 1px solid #dddfe2; */
+    margin-top: 16px;
+}
+.forgotten a{
+    font-size: 14px;
     font-weight: 500;
-    padding: 20px;
     color: #1877f2;
-    border-bottom: 1px solid #dddfe2;
 }
 .forgotten a:hover{
     text-decoration: underline;
     cursor: pointer;
 }
+.bottom-line{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 16px;
+    border-bottom: 1px solid #dadde1;
+}
 .to-signup {
+    padding-top: 6px;
+}
+.signup-button{
     display: inline-block;
     white-space: inherit;
     position: relative;
@@ -100,9 +126,9 @@ input::-webkit-input-placeholder {
     text-shadow: none;
     font-weight: bold;
     vertical-align: middle;
-    justify-content: center;
-    margin-top: 20px;
-    background-color: #42b72a;
+    background-color: #42b72a; 
+    color: #fff;
+    text-decoration: none; 
     border: none;
     border-radius: 6px;
     font-size: 17px;
@@ -110,18 +136,18 @@ input::-webkit-input-placeholder {
     padding: 0 16px;
     cursor: pointer;
 }
-.to-signup:hover{
-    background-color: #3ba526;
+.signup-button:hover{
+    background-color: #36a420;
 }
 .create-page{
-    display: flex;
     color: #1c1e21;
     font-size: 14px;
-    padding: 28px;
+    margin-top: 28px;
     text-align: center;
 }
 .create-page a{
     font-weight: bold;
+    cursor: pointer;
 }
 .create-page a:hover{
     text-decoration: underline;
