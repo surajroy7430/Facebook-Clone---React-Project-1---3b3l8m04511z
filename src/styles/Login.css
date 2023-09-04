@@ -1,4 +1,4 @@
-#main {
+#login-main {
     background-color: #f0f2f5;
     padding-top: 42px;
     padding-bottom: 112px;
@@ -51,12 +51,13 @@
         0 8px 16px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
 }
-.input-field{
+.login-field{
     padding: 6px 0;
     width: 364px;
     margin: auto;
 }
-input{
+.login-password, 
+.login-email{
     background-color: white;
     color: #1d2129;
     height: 22px;
@@ -69,7 +70,8 @@ input{
     font-size: 17px;
     vertical-align: middle;
 }
-input::-webkit-input-placeholder {
+.login-email::-webkit-input-placeholder, 
+.login-password::-webkit-input-placeholder {
     font-size: 17px;
     color: rgb(128, 128, 128, 0.8);
     padding-left: 0;

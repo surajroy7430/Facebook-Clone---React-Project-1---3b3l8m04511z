@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/Login.css'
 import { Link } from 'react-router-dom'
 
 const Login = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('');
 
+    const handleLogin = (e) => {
+        e.preventDefault();
+    }
     
   return (
-    <div id='main'>
+    <div id='login-main'>
         <div id='login'>
             <div className='logo-info'>
                 <div className='fb-logo'>
@@ -22,26 +27,34 @@ const Login = () => {
             <div className='login-outer'>
                 <div className='login-container'>
                     <form>
-                        <div className='input-field'>
+                        <div className='login-field'>
                             <input 
-                                type='text' 
+                                type='email' 
                                 id='email' 
                                 name='email' 
-                                placeholder='Email address or phone number' 
+                                placeholder='Email address' 
+                                className='login-email'
+                                value={email} 
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
-                        <div className='input-field'>
+                        <div className='login-field'>
                             <input 
                                 type='password' 
                                 id='password' 
                                 name='password' 
                                 placeholder='Password' 
+                                className='login-password'
+                                value={password} 
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
                         <div className='submit-button'>
                             <button 
                                 type='submit' 
-                                className='login-button'>Log In
+                                className='login-button' 
+                                onClick={handleLogin}
+                            >Log In
                             </button>
                         </div>
                         <div className='forgotten'>
