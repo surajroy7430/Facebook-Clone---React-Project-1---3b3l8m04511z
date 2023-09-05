@@ -1,53 +1,57 @@
 import React from 'react'
 import '../styles/SignUp.css';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
   return (
     <div id='signup-main'>
-      <img 
-        src="https://static.xx.fbcdn.net/rsrc.php/v3/yO/r/zgulV2zGm8t.png" 
-        alt="" 
-        width="24" 
-        height="24" 
-      />
+      <div className='fb-logo'>
+          <img className='signup-logo' 
+              src='https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg' 
+              alt='fb_logo' 
+          />
+      </div>
+
       <div id='signup'>
         <div className='signup-info'>
           <h1>Sign Up</h1>
           <p>It's quick and easy.</p>
         </div>
-        <hr />
+
         <div className='signup-outer'>
           <div className='signup-container'>
             <form>
-              <div className='signup-name'>
-                <input 
-                  type="text" 
-                  name="firstname" 
-                  id="firstname" 
-                  placeholder='First Name' 
-                />
-                <input 
-                  type="text" 
-                  name="lastname" 
-                  id="lastname" 
-                  placeholder='Last Name' 
-                />
-              </div>
-              <div className='signup-email'>
-                <input 
-                  type="text" 
-                  name="" 
-                  id="" 
-                  placeholder='Email Address'
-                />
-              </div>
-              <div className='signup-password'>
-                <input 
-                  type="password" 
-                  name="" 
-                  id="" 
-                  placeholder='Create Password'
-                />
+              <div id='signup-input-fields'>
+                <div className='fullname-field'>
+                  <input 
+                    type="text" 
+                    name="firstname" 
+                    id="firstname" 
+                    placeholder='First Name' 
+                  />
+                  <input 
+                    type="text" 
+                    name="lastname" 
+                    id="lastname" 
+                    placeholder='Last Name' 
+                  />
+                </div>
+                <div className='signup-email'>
+                  <input 
+                    type="text" 
+                    name="" 
+                    id="" 
+                    placeholder='Email Address'
+                  />
+                </div>
+                <div className='signup-password'>
+                  <input 
+                    type="password" 
+                    name="" 
+                    id="" 
+                    placeholder='Create Password'
+                  />
+                </div>
               </div>
 
               <div id='birthday-wrapper'>
@@ -68,9 +72,9 @@ const SignUp = () => {
                 </div>
               </div>
 
-              <div id='gender'>
+              <div id='gender-wrapper'>
                 <h5>Gender</h5>
-                <span className='gender-holder'>
+                <span className='gender'>
                   <span class="gender-field">
                     <label class="gender-label" htmlFor="female">Female</label>
                     <input type="radio" class="gender-input" name="sex" id="female" />
@@ -86,19 +90,28 @@ const SignUp = () => {
                 </span>
               </div>
 
-              <div>
+              <div className='policy'>
                 <p>
                   People who use our service may have uploaded your contact information to Facebook.&nbsp;
                   <a>Learn more</a>.
                 </p>
               </div>
 
-              <div>
+              <div className='policy'>
                 <p>
                   By clicking Sign Up, you agree to our&nbsp;
                   <a>Terms</a>, <a>Privacy Policy</a> and <a>Cookies Policy</a>. 
                   You may receive SMS notifications from us and can opt out at any time.
                 </p>
+              </div>
+
+              <div className='signup-button-holder'>
+                <button type="submit" className='signup-button'>Sign Up</button>
+              </div>
+
+              <div className='to-login'>
+                Already have an account?&nbsp;
+                <Link to='/login'>Login here</Link>
               </div>
             </form>
           </div>

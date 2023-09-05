@@ -56,8 +56,7 @@
     width: 364px;
     margin: auto;
 }
-.login-password, 
-.login-email{
+.login-field input{
     background-color: white;
     color: #1d2129;
     height: 22px;
@@ -70,9 +69,7 @@
     font-size: 17px;
     vertical-align: middle;
 }
-.login-email::-webkit-input-placeholder, 
-.login-password::-webkit-input-placeholder {
-    font-size: 17px;
+.login-field input::-webkit-input-placeholder {
     color: rgb(128, 128, 128, 0.8);
     padding-left: 0;
 }
@@ -120,7 +117,7 @@
 .to-signup {
     padding-top: 6px;
 }
-.signup-button{
+.create-account{
     display: inline-block;
     white-space: inherit;
     position: relative;
@@ -138,7 +135,7 @@
     padding: 0 16px;
     cursor: pointer;
 }
-.signup-button:hover{
+.create-account:hover{
     background-color: #36a420;
 }
 .create-page{

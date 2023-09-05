@@ -33,7 +33,6 @@ const Login = () => {
                                 id='email' 
                                 name='email' 
                                 placeholder='Email address' 
-                                className='login-email'
                                 value={email} 
                                 onChange={(e) => setEmail(e.target.value)}
                             />
@@ -43,8 +42,7 @@ const Login = () => {
                                 type='password' 
                                 id='password' 
                                 name='password' 
-                                placeholder='Password' 
-                                className='login-password'
+                                placeholder='Password'           
                                 value={password} 
                                 onChange={(e) => setPassword(e.target.value)}
                             />
@@ -62,7 +60,7 @@ const Login = () => {
                         </div>
                         <div className='bottom-line'></div>
                         <div className='to-signup'>
-                            <Link className='signup-button' to='/signup'>
+                            <Link className='create-account' to='/signup'>
                                 Create New Account
                             </Link>
                         </div>
