@@ -60,7 +60,7 @@ const Login = () => {
                         </div>
                         <div className='bottom-line'></div>
                         <div className='to-signup'>
-                            <Link className='create-account' to='/signup'>
+                            <Link to='/signup'>
                                 Create New Account
                             </Link>
                         </div>

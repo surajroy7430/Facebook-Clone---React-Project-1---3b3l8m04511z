@@ -20,7 +20,6 @@
     box-shadow: 
         0 2px 4px rgba(0, 0, 0, 0.1), 
         0 8px 16px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
     margin-top: 0;
 }
 .signup-info {
@@ -80,6 +79,9 @@ input::-webkit-input-placeholder {
     width: 125px;
     line-height: 20px;
     padding: 0 8px;
+}
+.dob select:focus {
+    outline: none;
 }
 #gender-wrapper {
     margin-bottom: 15px;
@@ -147,7 +149,7 @@ input::-webkit-input-placeholder {
     line-height: 20px;
     font-size: 17px;
 }
-.to-login .a {
+.to-login a {
     color: #1877f2;
     cursor: pointer;
     text-decoration: none;

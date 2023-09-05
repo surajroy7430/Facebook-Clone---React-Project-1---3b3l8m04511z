@@ -118,7 +118,7 @@
 .to-signup {
     padding-top: 6px;
 }
-.create-account{
+.to-signup a{
     display: inline-block;
     white-space: inherit;
     position: relative;
