@@ -3,6 +3,10 @@ import '../styles/SignUp.css';
 import { Link } from 'react-router-dom';
 
 const SignUp = () => {
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+}
   return (
     <div id='signup-main'>
       <div className='fb-logo'>
@@ -75,18 +79,15 @@ const SignUp = () => {
               <div id='gender-wrapper'>
                 <h5>Gender</h5>
                 <span className='gender'>
-                  <span class="gender-field">
-                    <label class="gender-label" htmlFor="female">Female</label>
+                  <label htmlFor="female" class="gender-field">Female
                     <input type="radio" class="gender-input" name="sex" id="female" />
-                  </span>
-                  <span class="gender-field">
-                    <label class="gender-label" htmlFor="male">Male</label>
+                  </label>
+                  <label htmlFor="male" class="gender-field">Male
                     <input type="radio" class="gender-input" name="sex" id="male" />
-                  </span>
-                  <span class="gender-field">
-                    <label class="gender-label" htmlFor="other">Other</label>
+                  </label>
+                  <label htmlFor="other" class="gender-field">Other
                     <input type="radio" class="gender-input" name="sex" id="other" />
-                  </span>
+                  </label>
                 </span>
               </div>
 
@@ -106,12 +107,18 @@ const SignUp = () => {
               </div>
 
               <div className='signup-button-holder'>
-                <button type="submit" className='signup-button'>Sign Up</button>
+                <button 
+                  type="submit" 
+                  className='signup-button' 
+                  onClick={handleSignUp}
+                >
+                  Sign Up
+                </button>
               </div>
 
               <div className='to-login'>
                 Already have an account?&nbsp;
-                <Link to='/login'>Login here</Link>
+                <Link className='a' to='/login'>Login here</Link>
               </div>
             </form>
           </div>
