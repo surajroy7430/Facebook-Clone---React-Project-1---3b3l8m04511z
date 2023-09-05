@@ -1,4 +1,5 @@
 #login-main {
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
     background-color: #f0f2f5;
     height: 100%;
     padding-top: 42px;
@@ -27,7 +28,6 @@
     box-sizing: border-box;
 }
 .logo-info h2 {
-    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
     font-size: 28px;
     line-height: 32px;
     font-weight: normal;
@@ -70,6 +70,10 @@
     font-size: 17px;
     vertical-align: middle;
 }
+.login-field input:focus {
+    border-color: #1b74e7;
+    box-shadow: 0 0 0 2px #e7f3ff
+}
 .login-field input::-webkit-input-placeholder {
     color: rgb(128, 128, 128, 0.8);
     padding-left: 0;
@@ -94,9 +98,11 @@
     box-sizing: content-box;
     cursor: pointer;
 }
+.login-button:active{
+    background-color: #29487d;
+}
 .forgotten {
     text-align: center;
-    /* border-bottom: 1px solid #dddfe2; */
     margin-top: 16px;
 }
 .forgotten a{
@@ -136,7 +142,7 @@
     padding: 0 16px;
     cursor: pointer;
 }
-.create-account:hover{
+.to-signup a:hover{
     background-color: #36a420;
 }
 .create-page{
