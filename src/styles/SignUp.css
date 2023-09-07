@@ -56,6 +56,9 @@
 input::-webkit-input-placeholder {
     color: #8d949e;
 }
+#signup-input-fields input:focus {
+    background-color: #fff;
+}
 .fullname-field {
     display: flex;
     gap: 10px;
