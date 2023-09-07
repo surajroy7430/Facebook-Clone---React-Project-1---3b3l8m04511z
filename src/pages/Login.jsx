@@ -17,7 +17,7 @@ const Login = () => {
                 <div className='fb-logo'>
                     <img className='logo' 
                         src='https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg' 
-                        alt='fb_logo' 
+                        alt='facebook_logo' 
                     />
                 </div>
                 <h2>
