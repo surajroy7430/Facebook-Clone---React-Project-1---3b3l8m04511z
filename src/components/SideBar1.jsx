@@ -5,7 +5,7 @@ import SidebarRow1 from './SidebarRow1';
 const Sidebar1 = () => {
 
     return (
-        <div className="sidebar">
+        <div id="sidebar1">
             <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/7_gcmlwrelX.png" title="COVID-19 Information Centre" />
             <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/tSXYIzZlfrS.png" title="Find Friends" />
             <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/Im_0d7HFH4n.png" title="Groups" />

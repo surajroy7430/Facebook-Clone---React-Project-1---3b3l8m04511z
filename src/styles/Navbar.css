@@ -92,13 +92,11 @@
     justify-content: center;
 }
   
-.home > .selected {
-    border-bottom: 3px solid #2d88ff !important;
-    padding-left: 10px;
-}
+
   
-.friends:hover, .watch:hover, .market:hover, .groups:hover {
+.home:hover, .friends:hover, .watch:hover, .market:hover, .groups:hover {
     background-color: #f0f2f5;
+    border-top: 3px solid #2d88ff !important;
     margin-bottom: 3px;
     border-radius: 10px;
 }
@@ -114,7 +112,7 @@
 }
   
 .addIcon {
-    background-image: url(https://facebook.com/rsrc.php/v3/yH/r/hD_JBkCe96v.png);
+    background-image: url('https://facebook.com/rsrc.php/v3/yH/r/hD_JBkCe96v.png');
     background-size: 33px 1483px;
     background-repeat: no-repeat;
     display: inline-block;
@@ -138,21 +136,17 @@
 }
   
 .dropdownIcon {
-    background-image: url(https://facebook.com/rsrc.php/v3/yg/r/fxgvE55fl_E.png);
-    background-size: 21px 21px;
+    background-image: url('https://i.ibb.co/1zmBtwr/84241059-189132118950875-4138507100605120512-n.jpg');
     background-repeat: no-repeat;
+    background-size: cover;
     display: inline-block;
-    height: 20px;
-    width: 20px;
-    vertical-align: -0.25em;
-    -webkit-filter: invert(100%);
-    background-position: 0 0;
-    margin-top: 10px;
-    margin-left: 10px;
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
 }
   
 .searchIcon {
-    background-image: url(https://facebook.com/rsrc.php/v3/yH/r/hD_JBkCe96v.png);
+    background-image: url('https://facebook.com/rsrc.php/v3/yH/r/hD_JBkCe96v.png');
     background-size: 33px 1483px;
     background-repeat: no-repeat;
     display: inline-block;
@@ -187,7 +181,7 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #242526;
+    background-color: rgb(233, 227, 227);
     width: 345px;
     z-index: 1;
     margin-left: -300px;
@@ -198,7 +192,7 @@
 .dropdown-content.block {
     display: block;
     position: absolute;
-    background-color: #242526;
+    background-color: rgb(233, 227, 227);
     width: 345px;
     z-index: 1;
     margin-left: -300px;
@@ -209,7 +203,7 @@
 .dropdown-content2 {
     display: none;
     position: absolute;
-    background-color: #242526;
+    background-color: rgb(233, 227, 227);
     width: 345px;
     z-index: 1;
     margin-left: -240px;
@@ -226,7 +220,7 @@
 .dropdown-content3{
     display: none;
     position: absolute;
-    background-color: #242526;
+    background-color: rgb(233, 227, 227);
     width: 295px;
     z-index: 1;
     margin-left: 0px;

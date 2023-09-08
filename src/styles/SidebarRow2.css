@@ -7,7 +7,7 @@
 }
 
 .sidebar2Row:hover {
-    background-color: #2F3031;
+    background-color: rgb(233, 227, 227);
     border-radius: 10px;
     width: 80%;
 }
@@ -18,7 +18,7 @@
 }
 
 .sidebar2Row h1 {
-color: #fff;
+color: #444546;
 font-size: 15px;
 font-weight: 500;
 margin-top: 5px;
