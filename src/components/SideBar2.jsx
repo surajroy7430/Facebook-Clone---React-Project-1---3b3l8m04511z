@@ -1,16 +1,18 @@
 import SidebarRow2 from "./SidebarRow2"
+import '../styles/SideBar2.css'
+import {ReactComponent as SearchIcon} from '../assets/searchicon.svg'
 
 function Sidebar2() {
     return (
         <div id="sidebar2">
-            <div class="hr" />
+            <div className="hr" />
 
-            <div class="details">
+            <div className="details">
                 <h1>Contacts</h1>
-                <i class="searchIcon2" />
-                <i class="more" />
+                <SearchIcon className="searchIcon2" />
+                <i className="more" />
             </div>
-            <div class="contacts">
+            <div className="contacts">
                 <SidebarRow2 ImageURL="https://scontent.fhyd11-1.fna.fbcdn.net/v/t1.0-1/p148x148/118481251_3275143269198791_1562775451854010190_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_ohc=DJ5eF_SWz8gAX_k1CMp&_nc_ht=scontent.fhyd11-1.fna&tp=6&oh=3eb6fe833a57e157b042a857b554baba&oe=5F739318" title="Ajay" />
                 <SidebarRow2 ImageURL="https://scontent.fhyd11-1.fna.fbcdn.net/v/t1.0-1/cp0/c0.0.74.74a/p74x74/1964942_1380791475530225_1868751307_n.jpg?_nc_cat=111&_nc_sid=7206a8&_nc_ohc=wucfE-7H3-sAX9dzxiz&_nc_ht=scontent.fhyd11-1.fna&oh=f07f9733ea878c897b8d355c6eea7272&oe=5F72C094" title="Adarsh" />
                 <SidebarRow2 ImageURL="https://scontent.fhyd11-1.fna.fbcdn.net/v/t1.0-1/p480x480/23915747_1743376409070431_4370438628077084250_n.jpg?_nc_cat=102&_nc_sid=7206a8&_nc_ohc=dqZ-_Ie8MgoAX9v6cm3&_nc_ht=scontent.fhyd11-1.fna&tp=6&oh=b475ffff66ac8b05ddd63609035aa088&oe=5F7454E7" title="Priya" />

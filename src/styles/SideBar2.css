@@ -7,9 +7,9 @@
 
 @media screen and (max-width: 1280px) {
     .sidebar2 {
-      margin-left: 0;
+        margin-left: 0;
     }
-  }
+}
 
 .contacts {
     margin-top: 10px;
@@ -19,7 +19,7 @@
     margin-bottom: 10px;
     margin-right: 16px;
     margin-top: 8px;
-    border-bottom: 2px solid #3E4042;
+    border-bottom: 1px solid #3E4042;
 }
 
 h1 {
@@ -31,29 +31,19 @@ h1 {
 }
 
 .searchIcon2 {
-    background-image: url(https://facebook.com/rsrc.php/v3/yH/r/hD_JBkCe96v.png);
-    background-size: 33px 1483px;
-    background-repeat: no-repeat;
     width: 16px;
     cursor: pointer;
     margin-left: 190px;
     height: 16px;
-    background-position: 0 -1398px;
-    vertical-align: -0.25em;
     -webkit-filter: invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);
 }
 
 .more {
-    background-image: url(https://facebook.com/rsrc.php/v3/yH/r/hD_JBkCe96v.png);
-    background-size: 33px 1483px;
-    background-repeat: no-repeat;
     width: 16px;
     float: right;
     height: 16px;
     cursor: pointer;
     margin-left: 30px;
-    background-position: 0 -1364px;
-    vertical-align: -0.25em;
     -webkit-filter: invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);
 }
 

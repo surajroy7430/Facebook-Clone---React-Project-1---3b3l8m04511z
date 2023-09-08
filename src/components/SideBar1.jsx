@@ -6,14 +6,13 @@ const Sidebar1 = () => {
 
     return (
         <div id="sidebar1">
-            <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/7_gcmlwrelX.png" title="COVID-19 Information Centre" />
-            <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/tSXYIzZlfrS.png" title="Find Friends" />
-            <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/Im_0d7HFH4n.png" title="Groups" />
-            <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/y4/r/MN44Sm-CTHN.png" title="Marketplace" />
-            <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/y-/r/FhOLTyUFKwf.png" title="Videos" />
-            <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/N7UOh8REweU.png" title="Events" />
-            <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/y-/r/Uy-TOlM5VXG.png" title="Memories" />
-            <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/yA/r/KlDlsO3UxDM.png" title="Saved" />
+            <SidebarRow1 ImageLink="" title="Friends" />
+            <SidebarRow1 ImageLink="" title="Memories" />
+            <SidebarRow1 ImageLink="" title="Saved" />
+            <SidebarRow1 ImageLink="" title="Groups" />
+            <SidebarRow1 ImageLink="" title="Marketplace" />
+            <SidebarRow1 ImageLink="" title="Feeds" />
+            <SidebarRow1 ImageLink="" title="Events" />
             <SidebarRow1 dropdown ImageLink="null" title="See more" />
             <div class="hr" />
             <div class="policies">
