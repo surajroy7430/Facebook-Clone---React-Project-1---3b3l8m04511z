@@ -1,10 +1,11 @@
 #sidebar2 {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    margin-left: 10%;
+    width: 25%;
+    top: 70px;
+    margin-left: 75%;
+    position: fixed;
 }
-
 @media screen and (max-width: 1280px) {
     .sidebar2 {
         margin-left: 0;
@@ -19,42 +20,64 @@
     margin-bottom: 10px;
     margin-right: 16px;
     margin-top: 8px;
-    border-bottom: 1px solid #3E4042;
-}
-
-h1 {
-    font-size: 17px;
-    font-weight: 600;
-    color: #b0b3b8;
-    cursor: context-menu;
-    margin-left: 16px;
-}
-
-.searchIcon2 {
-    width: 16px;
-    cursor: pointer;
-    margin-left: 190px;
-    height: 16px;
-    -webkit-filter: invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);
-}
-
-.more {
-    width: 16px;
-    float: right;
-    height: 16px;
-    cursor: pointer;
-    margin-left: 30px;
-    -webkit-filter: invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);
+    width: 100%;
+    border-bottom: 1px solid #afb2b4;
 }
 
 .details {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+}
+.details h1, .group_conv h1 {
+    font-size: 18.4px;
+    font-weight: 600;
+    color: #76797e;
+    cursor: context-menu;
+    margin-left: 16px;
+}
+.group_conv {
+    margin-top: 13px;
+}
+.create_group {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 13px;
+    text-align: center;
+    cursor: pointer;
+}
+.create_group h1{
+    color: #4a4d4d;
+    font-size: 15.6px;
+    margin-top: 5px;
+}
+.create_group:hover {
+    background-color: #e6e3e3;
+    border-radius: 7px;
+    padding: 5px 12px;
+}
+.add_button {
+    font-size: x-large;
+    background-color: aquamarine;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+}
+.add_button div {
+    text-align: center;
+}
+.more {
+    display: flex;
+    gap: 27px;
+}
+.searchIcon2, .options {
+    width: 16px;
+    cursor: pointer;
+    height: 16px;
+    color: #1c1e21;
 }
 
-
 @media screen and (max-width: 600px) {
-    .sidebar2 {
+    #sidebar2 {
         display: none;
     }
 }

@@ -6,31 +6,32 @@ const Sidebar1 = () => {
 
     return (
         <div id="sidebar1">
-            <SidebarRow1 ImageLink="" title="Friends" />
-            <SidebarRow1 ImageLink="" title="Memories" />
-            <SidebarRow1 ImageLink="" title="Saved" />
-            <SidebarRow1 ImageLink="" title="Groups" />
-            <SidebarRow1 ImageLink="" title="Marketplace" />
-            <SidebarRow1 ImageLink="" title="Feeds" />
-            <SidebarRow1 ImageLink="" title="Events" />
+            <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/yz/r/4GR4KRf3hN2.png" title="Friends" className="side_friends" />
+            <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/yz/r/4GR4KRf3hN2.png" title="Memories" className="side_memories" />
+            <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/yz/r/4GR4KRf3hN2.png" title="Saved" className="side_saved" />
+            <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/yz/r/4GR4KRf3hN2.png" title="Groups" className="side_groups" />
+            <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/yz/r/4GR4KRf3hN2.png" title="Marketplace" className="side_marketplace" />
+            <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/yz/r/4GR4KRf3hN2.png" title="Feeds" className="side_feeds" />
+            <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/yz/r/4GR4KRf3hN2.png" title="Events" className="side_events" />
             <SidebarRow1 dropdown ImageLink="null" title="See more" />
-            <div class="hr" />
-            <div class="policies">
-                <p>Privacy </p>
-                <p class="dot">·</p>
-                <p>Terms </p>
-                <p class="dot">·</p>
-                <p>Advertising </p>
-                <p class="dot">·</p>
-                <p>Ad Choices </p>
-                <i class="ads" />
-                <p class="dot">·</p>
-                <p>Cookies </p>
-                <p class="dot">·</p>
-                <p>More </p>
-                <p class="dot">·</p>
-                <p>Meta © 2023</p>
-            </div>
+            <div className="hr" />
+            <footer>
+                <div className="policies">
+                    <a>Privacy</a>
+                    <p className="dot">·</p>
+                    <a>Terms</a>
+                    <p className="dot">·</p>
+                    <a>Advertising</a>
+                    <p className="dot">·</p>
+                    <a>Ad Choices</a>
+                    <p className="dot">·</p>
+                    <a>Cookies </a>
+                    <p className="dot">·</p>
+                    <p>More </p>
+                    <p className="dot">·</p>
+                    <p>Meta © 2023</p>
+                </div>
+            </footer>
         </div>
     )
 }
