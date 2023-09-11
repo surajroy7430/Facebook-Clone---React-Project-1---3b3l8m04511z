@@ -132,18 +132,8 @@ const Header =() => {
               </div>
             </a>
             <div className="hr" />
-            <a href="#">
-              <div className="optionDrop">
-                <div className="iconDrop">
-                  <i className="feedback" />
-                </div>
-                <div className="sideinfoDrop">
-                  <h1>Give Feedback</h1>
-                  <p>Help us improve the new Facebook</p>
-                </div>
-              </div>
-            </a>
-            <div className="hr" />
+            
+            <div/>
             <a href="#">
               <div className="optionDrop">
                 <div className="iconDrop">
@@ -166,6 +156,16 @@ const Header =() => {
                   <i className="darkMode" />
                 </div>
                 <h1>Dark Mode</h1>
+              </div>
+            </a>
+            <a href="#">
+              <div className="optionDrop">
+                <div className="iconDrop">
+                  <i className="feedback" />
+                </div>
+                <div className="sideinfoDrop">
+                  <h1>Give Feedback</h1>
+                </div>
               </div>
             </a>
             <a href="#">

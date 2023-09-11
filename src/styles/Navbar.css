@@ -11,6 +11,7 @@
   
 .navbar-LogoAndSearch {
     display: flex;
+    max-width: 110px;
 }
   
 .navbar__logo {
@@ -22,9 +23,9 @@
   
 .navbar__search {
     background-color: #f2f3f2;
-    border-radius: 30px;
+    border-radius: 50%;
     width: 44px;
-    margin:10px 0;
+    margin: 10px 0;
     cursor: pointer;
     margin-left: 8px;
 }
@@ -46,7 +47,7 @@
     height: 18px;
     margin-left: 13px;
     margin-top: 12px;
-    -webkit-filter: invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(70%) contrast(96%);
+    color: rgb(63, 63, 63);
 }
   
 .navbar__searchBack:hover {
@@ -76,12 +77,11 @@
 }
   
 .selected {
-    fill: #2d88ff !important;
+    fill: #2d88ff ;
 }
   
 .navbar__pages {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     margin-left: 170px;
 }
@@ -94,16 +94,14 @@
   
 .navbar__otherIcons {
     display: flex;
-    flex-direction: row;
     margin-right: 10px;
     justify-content: center;
 }
 
 .home:hover, .friends:hover, .market:hover, .groups:hover, .gaming:hover {
     background-color: #f0f2f5;
-    border-top: 3px solid #2d88ff !important;
-    margin-bottom: 3px;
-    border-radius: 10px;
+    margin: 4px;
+    border-radius: 8px;
 }
   
 .PagesIcon {
@@ -123,7 +121,7 @@
 }
   
 .notificationsIcon.blue {
-    fill: #2d88ff !important;
+    fill: #2d88ff ;
 }
   
 .dropdownIcon {
@@ -142,7 +140,7 @@
     }
   
     .dropdownIconspe {
-        display: block !important;
+        display: block ;
     } 
 }
   
@@ -285,7 +283,7 @@
 }
   
 .optionDrop h1 {
-    font-size: 17px !important;
+    font-size: 17px ;
     font-weight: 600;
     color: #b0b3b8;
     cursor: context-menu;
@@ -297,13 +295,13 @@
 }
   
 .logout {
-    vertical-align: -0.25em;
-    -webkit-filter: invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);
-    background-position: 0 -1011px;
-    background-image: url('https://facebook.com/rsrc.php/v3/y-/r/EOPZGFLdpJY.png');
-    background-size: 25px 2268px;
+    background-image: url('https://static.xx.fbcdn.net/rsrc.php/v3/yV/r/9zxP3eMgEJY.png');
+    background-position: 0 -696px;
+    background-size: auto;
     background-repeat: no-repeat;
     display: inline-block;
+    vertical-align: -0.25em;
+    color: #070707;
     height: 20px;
     width: 20px;
 }
@@ -319,39 +317,39 @@
 }
   
 .darkMode {
-    vertical-align: -0.25em;
-    -webkit-filter: invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);
-    background-position: 0 -1179px;
-    background-image: url('https://facebook.com/rsrc.php/v3/y-/r/EOPZGFLdpJY.png');
-    background-size: 25px 2268px;
+    background-image: url('https://static.xx.fbcdn.net/rsrc.php/v3/ym/r/CK6LPi7oEYl.png');
+    background-position: 0 -172px;
+    background-size: auto;
     background-repeat: no-repeat;
+    vertical-align: -0.25em;
     display: inline-block;
+    color: #070707;
     height: 20px;
     width: 20px;
 }
   
 .helpAndSupport {
-    vertical-align: -0.25em;
-    -webkit-filter: invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);
-    background-image: url('https://facebook.com/rsrc.php/v3/y-/r/EOPZGFLdpJY.png');
-    background-size: 25px 2268px;
+    background-image: url('https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/EuiRM2W9jo7.png');
+    background-position: 0 -427px;
     background-repeat: no-repeat;
+    background-size: auto;
+    vertical-align: -0.25em;
     display: inline-block;
-    background-position: 0 -1326px;
+    color: #070707;
     height: 20px;
     width: 20px;
 }
   
 .settings {
-    vertical-align: -0.25em;
-    -webkit-filter: invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);
-    background-image: url('https://facebook.com/rsrc.php/v3/yH/r/hD_JBkCe96v.png');
-    background-size: 33px 1483px;
+    background-image: url('https://static.xx.fbcdn.net/rsrc.php/v3/yf/r/48gAZBHmRYi.png');
+    background-size: auto;
     background-repeat: no-repeat;
     display: inline-block;
-    height: 20px !important;
-    width: 20px !important;
-    background-position: 0 -1093px;
+    vertical-align: -0.25em;
+    color: #070707;    
+    height: 20px;
+    width: 20px;
+    background-position: -63px -105px;
 }
   
 .hr {
@@ -368,27 +366,27 @@
 }
   
 .sideinfoDrop > p {
-    font-size: 13px !important;
-    font-weight: 400 !important;
-    color:#b0b3b8 !important;
-    margin-left: 16px !important;
+    font-size: 13px ;
+    font-weight: 400 ;
+    color:#b0b3b8 ;
+    margin-left: 16px ;
 }
   
 .sideinfoDrop > h1 {
-    font-size: 17px !important;
-    font-weight: 600 !important;
-    color: #b0b3b8 !important;
+    font-size: 17px ;
+    font-weight: 600 ;
+    color: #b0b3b8 ;
     margin-left: 15px;
-    margin-top: 10px !important;
+    margin-top: 10px ;
 }
   
 .feedback {
-    vertical-align: -0.25em;
-    -webkit-filter: invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);
-    background-position: 0 -717px;
-    background-image: url('https://facebook.com/rsrc.php/v3/y-/r/EOPZGFLdpJY.png');
-    background-size: 25px 2268px;
+    background-image: url('https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/EuiRM2W9jo7.png');
+    background-position: 0px -217px;
+    background-size: auto;
     background-repeat: no-repeat;
+    vertical-align: -0.25em;
+    color: #070707;
     display: inline-block;
     height: 20px;
     width: 20px;
@@ -407,11 +405,11 @@
 }
   
 .sideinfoDropAvatar > h1 {
-    font-size: 17px !important;
-    font-weight: 600 !important;
-    color: #e4e6eb !important;
-    margin: 0 !important;
-    margin-top: 10px !important;
+    font-size: 17px ;
+    font-weight: 600 ;
+    color: #e4e6eb ;
+    margin: 0 ;
+    margin-top: 10px ;
 }
   
 .sideinfoDropAvatar > p {
@@ -431,7 +429,7 @@
 }
   
 .announcementInfo span {
-    font-weight: 400 !important;
+    font-weight: 400 ;
 }
   
 .announcement {
@@ -439,20 +437,15 @@
 }
   
 .NoNotif {
-    font-size: 13px !important;
-    font-weight: 400 !important;
+    font-size: 13px ;
+    font-weight: 400 ;
 }
   
 .searchBackIcon {
-    background-image: url('https://facebook.com/rsrc.php/v3/yy/r/b6UjiOJoi2u.png');
-    background-size: 25px 1035px;
-    background-repeat: no-repeat;
     display: inline-block;
     height: 20px;
-    -webkit-filter: invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);
-    width: 20px;
-    background-position: 0 -125px;
-    vertical-align: -0.25em;
+    color: gray;
+    width: 25px;
     margin-top: 10px;
     margin-left: 10px;
 }
@@ -510,14 +503,14 @@ ul li a {
 }
   
 .round.profile {
-    display: flex !important;
-    flex-direction: row !important;
+    display: flex ;
+    flex-direction: row ;
     width: 50%;
 }
   
 .round.profile a {
-    display: flex !important;
-    flex-direction: row !important;
+    display: flex ;
+    flex-direction: row ;
 }
   
 .round.profile a p {
@@ -530,15 +523,15 @@ ul li a {
   
   
 .ProfileAvatar {
-    width: 30px !important;
-    height: 30px !important;
+    width: 30px ;
+    height: 30px ;
     margin-top :5px;
     margin-left: 3px;
 }
   
 @media screen and (max-width: 1280px) {
     .round.profile {
-        display: none !important;
-        flex-direction: row !important;
+        display: none ;
+        flex-direction: row ;
     }
 }
