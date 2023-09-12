@@ -8,5 +8,6 @@ body{
     font-size: 12px;
     line-height: 1.34;
     overflow-y: scroll;
+    overflow-x: hidden;
     box-sizing: border-box;
 }

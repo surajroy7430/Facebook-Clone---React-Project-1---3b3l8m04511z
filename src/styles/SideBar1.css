@@ -1,6 +1,5 @@
 #sidebar1 {
     flex: 0.2;
-    margin-top: 70px;
     width: 24%;
     position: fixed;
 }
@@ -20,9 +19,7 @@
     width: auto;
     margin-left: 16px;
     flex-wrap: wrap;
-    margin-right: 16px;
     gap: 0.6px;
-    margin-top: 30%;
 }
 
 .policies p, a {
