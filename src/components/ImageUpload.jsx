@@ -137,7 +137,7 @@ function ImageUpload() {
                 open={open}
                 onClose={handleClose}
                 scroll={scroll}>
-                <form method='POST'>
+                <form>
                     <div class="makeStyles-paper-1">
                         <div class="modalInit">
                             <h1>Create Post</h1>
@@ -161,7 +161,7 @@ function ImageUpload() {
                         </div>
                         <div class="colorAndEmoji">
                             <img alt="" class="colorAlpha" src="https://facebook.com/images/composer/SATP_Aa_square-2x.png"></img>
-                            <i className='emoji' />
+                            <i className='emoji' title='Emoji' />
                         </div>
                         <progress value={progress} className="hidden" max="100" />
 

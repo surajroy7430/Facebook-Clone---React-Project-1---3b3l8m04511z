@@ -9,7 +9,7 @@
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    max-width: 550px;
+    max-width: 36%;
     position: relative;
 }
 
@@ -50,10 +50,12 @@
 }
 .options {
     display: flex;
-    justify-content: space-between;
-    gap: 35px;
-    margin-left: 35px;
-    margin-bottom: 35px;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    margin-bottom: 10px;
+    height: auto;
+    width: auto;
 }
 .liveVideoIcon1 {
     background-image: url('../images/liveVideo.png');
@@ -72,7 +74,10 @@
 }
 .liveVideo, .photo, .feeling {
     display: flex;
+    text-align: center;
     transition: 0.2s ease-out;
+    padding: 0 12px;
+    margin-left: 5px;
 }
 
 .liveVideo > h2, .photo > h2, .feeling > h2 {
@@ -85,11 +90,12 @@
 .liveVideo > i, .photo > i, .feeling > i {
     margin-top: 10px;
 }
+.liveVideo:hover, .photo:hover, .feeling:hover {
+    background-color: #f0f2f5;
+    border-radius: 7px;
+}
 .imageupload__container > .hr {
-    margin-left: 16px;
-    margin-bottom: 10px;
-    margin-right: 16px;
-    margin-top: 8px;
+    margin-left: 8px 16px;
     width: auto;
     border-bottom: 2px solid #d8dddf;
 }
@@ -220,15 +226,14 @@
 }
 
 .right {
+    display: flex;
+    gap: 10px;
     margin-right: 10px;
-}
-.right img {
-    gap: 20px;
 }
 .Icon {
     margin-left: 5px;
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
     object-fit: cover;
 }
 .Icon:hover {
@@ -236,8 +241,8 @@
 }
 
 .moreIcon2 {
-    height: 24px;
-    width: 24px;
+    height: 26px;
+    width: 26px;
     background-image: url('https://static.xx.fbcdn.net/rsrc.php/v3/yA/r/FjgFSs1gHmM.png');
     background-position: 0px -37px;
     background-size: auto;
