@@ -307,7 +307,7 @@
 .optionDrop h1 {
     font-size: 17px ;
     font-weight: 600;
-    color: #b0b3b8;
+    color: #4a4a4d;
     cursor: context-menu;
     margin-left: 16px;
 }
@@ -397,7 +397,7 @@
 .sideinfoDrop > h1 {
     font-size: 17px ;
     font-weight: 600 ;
-    color: #b0b3b8 ;
+    color: #4a4a4d ;
     margin-left: 15px;
     margin-top: 10px ;
 }
