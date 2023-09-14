@@ -140,6 +140,7 @@ input::-webkit-input-placeholder {
     background: none;
     background-color: #00a400;
     border: none;
+    outline: none;
     border-radius: 6px;
     text-shadow: none;
     cursor: pointer;

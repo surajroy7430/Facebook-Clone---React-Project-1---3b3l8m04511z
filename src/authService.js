@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
 
 const API_URL = 'https://academics.newtonschool.co/api/v1/user';
 
 // Function to log in a user
-export const login = async (email, password) => {
+export const loginAuth = async (email, password) => {
   try {
     const response = await axios.post(`${API_URL}/login`, {
       email,
@@ -16,7 +16,7 @@ export const login = async (email, password) => {
 };
 
 // Function to sign up a user
-export const signup = async (name, email, password) => {
+export const signupAuth = async (name, email, password) => {
   try {
     const response = await axios.post(`${API_URL}/signup`, {
       name,
@@ -30,7 +30,7 @@ export const signup = async (name, email, password) => {
 };
 
 // Function to update password
-export const updatePassword = async (
+export const updatePasswordAuth = async (
   name,
   email,
   currentPassword,

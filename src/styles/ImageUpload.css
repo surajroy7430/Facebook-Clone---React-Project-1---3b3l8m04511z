@@ -23,7 +23,7 @@
 
 .postArea input {
     background-color: #f0f2f5;
-    width: 82%;
+    width: 80%;
     outline: none;
     border: none;
     margin-top: 10px;
@@ -38,7 +38,7 @@
     background-color: #e8ebec;
 }
 .postArea input::-webkit-input-placeholder {
-    font-size: 19px;
+    font-size: 17px;
     color: #7a7c7e;
 }
 
@@ -50,12 +50,11 @@
 }
 .options {
     display: flex;
-    align-items: center;
-    justify-content: center;
     width: auto;
-    margin-bottom: 10px;
+    max-width: fit-content;
     height: auto;
-    width: auto;
+    margin-left: 14px;
+    margin-bottom: 10px;
 }
 .liveVideoIcon1 {
     background-image: url('../images/liveVideo.png');

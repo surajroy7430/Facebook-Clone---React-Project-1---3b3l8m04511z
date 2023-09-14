@@ -123,59 +123,41 @@ const Header =() => {
         <div className="round" onClick={renderProfile}>
           <DefaultProfile className={`dropdownIcon ${profileDown === true}`} title="Account" />
           <div className="dropdown-content">
-            <a href="#">
+            <Link to="#">
               <div className="optionDrop">
                 <img src="https://i.ibb.co/1zmBtwr/84241059-189132118950875-4138507100605120512-n.jpg" alt="profile" className="Avatar" />
                 <div className="sideinfoDropAvatar">
                   <p>See your profile</p>
                 </div>
               </div>
-            </a>
+            </Link>
             <div className="hr" />
             
             <div/>
-            <a href="#">
+            <Link to="#">
               <div className="optionDrop">
                 <div className="iconDrop">
                   <i className="settings" />
                 </div>
                 <h1>Settings & Privacy</h1>
               </div>
-            </a>
-            <a href="#">
-              <div className="optionDrop">
-                <div className="iconDrop">
-                  <i className="helpAndSupport" />
-                </div>
-                <h1>Help & Support</h1>
-              </div>
-            </a>
-            <a href="#">
+            </Link>
+            <Link to="#">
               <div className="optionDrop">
                 <div className="iconDrop">
                   <i className="darkMode" />
                 </div>
                 <h1>Dark Mode</h1>
               </div>
-            </a>
-            <a href="#">
-              <div className="optionDrop">
-                <div className="iconDrop">
-                  <i className="feedback" />
-                </div>
-                <div className="sideinfoDrop">
-                  <h1>Give Feedback</h1>
-                </div>
-              </div>
-            </a>
-            <a href="#">
+            </Link>
+            <Link to="#">
               <div className="optionDrop">
                 <div className="iconDrop">
                   <i className="logout" />
                 </div>
                 <h1>Log out</h1>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

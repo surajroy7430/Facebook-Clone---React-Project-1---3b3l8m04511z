@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/SignUp.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { signupAuth } from '../authService';
 
 const SignUp = () => {
   const [selectedMonth, setSelectedMonth] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
   const [selectedDay, setSelectedDay] = useState('');
+
+  const navigate = useNavigate();
+
+  const monthNames = [
+    'Month',
+    'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
+    'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'
+  ]
 
   // Helper function to generate options for days, months, and years
   const generateOptions = (start, end) => {
@@ -45,8 +54,33 @@ const SignUp = () => {
     setSelectedDay('');
   }, [selectedMonth, selectedYear]);
 
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
+
+    const firstName = document.getElementById('firstname').value;
+    const lastName = document.getElementById('lastname').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const gender = document.querySelector('input[name="sex"]:checked').value;
+
+    if(!firstName || !lastName || !email || !password || 
+        !gender || !selectedDay || !selectedMonth || !selectedYear) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    try {
+      await signupAuth(firstName + '' + lastName, email, password);
+
+      localStorage.setItem('FirstName', firstName);
+      localStorage.setItem('LastName', lastName);
+      localStorage.setItem('Email', email);
+      localStorage.setItem('Password', password);
+
+      navigate('/login');
+    } catch (error) {
+      console.error('signup failed: ', error);
+    }
 }
   return (
     <div id='signup-main'>
@@ -86,17 +120,17 @@ const SignUp = () => {
                 <div className='signup-email'>
                   <input 
                     type="text" 
-                    name="" 
-                    id="" 
+                    name="email" 
+                    id="email" 
                     placeholder='Email Address' 
                     required 
                   />
                 </div>
                 <div className='signup-password'>
                   <input 
-                    type="password" 
-                    name="" 
-                    id="" 
+                    type="text" 
+                    name="password" 
+                    id="password" 
                     placeholder='Create Password' 
                     required
                   />
@@ -106,15 +140,39 @@ const SignUp = () => {
               <div id='birthday-wrapper'>
                 <h5>Date Of Birth</h5>
                 <div className='dob'>
-                  <select name="day" id="day" title='Day' required value={selectedDay} onChange={handleDayChange}>
+                  <select 
+                    name="day" 
+                    id="day" 
+                    title='Day' 
+                    required 
+                    value={selectedDay} 
+                    onChange={handleDayChange}
+                  >
                     <option value="">Day</option>
                     {generateDays()}
                   </select>
-                  <select name="month" id="month" title='Month' required value={selectedMonth} onChange={handleMonthChange}>
-                    <option value="">Month</option>
-                    {generateOptions(1, 12)}
+                  <select 
+                    name="month" 
+                    id="month" 
+                    title='Month' 
+                    required 
+                    value={selectedMonth} 
+                    onChange={handleMonthChange}
+                  >
+                    {monthNames.map((monthName, i) => (
+                      <option key={i} value={i}>
+                        {monthName}
+                      </option>
+                    ))};
                   </select>
-                  <select name="year" id="year" title='Year' required value={selectedYear} onChange={handleYearChange}>
+                  <select 
+                    name="year" 
+                    id="year" 
+                    title='Year' 
+                    required 
+                    value={selectedYear} 
+                    onChange={handleYearChange}
+                  >
                     <option value="">Year</option>
                     {generateOptions(1905, 2023)}
                   </select>
