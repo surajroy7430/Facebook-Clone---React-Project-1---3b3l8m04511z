@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import '../styles/SideBar1.css';
 import SidebarRow1 from './SidebarRow1';
+import {ReactComponent as FriendsIcon} from '../assets/friends.svg'
 
 const Sidebar1 = () => {
 
     return (
         <div id="sidebar1">
-            <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/yz/r/4GR4KRf3hN2.png" title="Friends" className="side_friends" />
+            <SidebarRow1 ImageLink={<FriendsIcon />} title="Friends" className="side_friends" />
             <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/yz/r/4GR4KRf3hN2.png" title="Memories" className="side_memories" />
             <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/yz/r/4GR4KRf3hN2.png" title="Saved" className="side_saved" />
             <SidebarRow1 ImageLink="https://static.xx.fbcdn.net/rsrc.php/v3/yz/r/4GR4KRf3hN2.png" title="Groups" className="side_groups" />
