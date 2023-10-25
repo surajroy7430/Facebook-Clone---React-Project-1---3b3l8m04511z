@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import '../styles/Navbar.css';
+import './Navbar.css';
 import { Link } from "react-router-dom";
 import {ReactComponent as SearchIcon} from '../assets/searchicon.svg'
 import {ReactComponent as BackIcon} from '../assets/arrowback.svg'

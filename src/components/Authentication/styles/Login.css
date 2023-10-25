@@ -1,0 +1,73 @@
+.login-container {
+    width: 400px;
+    margin-top: 64px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.login-card {
+    background-color: #fff;
+}
+  
+.logo {
+    height: 92px;
+}
+  
+p.subtitle {
+    font-size: 20px;
+    margin: 16px 0;
+    font-weight: 600;
+}
+  
+.form {
+    width: 100%;
+    margin-top: 8px;
+}
+  
+button.login-button {
+    font-weight: bold;
+    background-color: #1877f2;
+    font-size: 18px;
+    line-height: 48px;
+    padding: 3px 16px;
+    margin: 8px 0;
+}
+div.forgotten {
+    margin: 8px 0;
+}
+div.forgotten a{
+    font-size: 14px;
+    font-weight: 500;
+    color: #1877f2;
+    text-decoration: none;
+}
+div.forgotten a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+div.to-signup {
+    margin-top: 18px;
+}
+div.to-signup a{
+    display: inline-block;
+    white-space: inherit;
+    position: relative;
+    text-align: center;
+    text-shadow: none;
+    font-weight: bold;
+    vertical-align: middle;
+    background-color: #42b72a; 
+    color: #fff;
+    text-decoration: none; 
+    border: none;
+    border-radius: 6px;
+    font-size: 17px;
+    line-height: 48px;
+    padding: 0 16px;
+    cursor: pointer;
+}
+div.to-signup a:hover{
+    background-color: #36a420;
+}
+  
+  

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Profile.css';
 import ProfileSidebar from './ProfileSidebar';
-import ImageUpload from './ImageUpload';
+import ImageUpload from '../ImageUpload';
 import Post from './Post';
 
 function Profile({ user }) {

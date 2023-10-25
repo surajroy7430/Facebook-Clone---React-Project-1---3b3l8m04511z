@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    background: transparent;
+    line-height: 1;
+    background-color: #fff;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: initial;
+    width: auto;
+    top: initial;
+    text-rendering: optimizeLegibility;
+    vertical-align: baseline;
+}
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: transparent;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #acacac; /* Color of the scrollbar handle */
+    border-radius: 5px; /* Border radius of the scrollbar handle */
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #7a7a7a; /* Color of the scrollbar handle on hover */
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent; /* Color of the scrollbar track */
+}
