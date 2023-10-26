@@ -85,7 +85,7 @@ const Login = () => {
           </form>
           <Grid container justifyContent="center" className='forgotten'>
             <Grid item className='forgotten'>
-              <Link>Forgotten Password?</Link>
+              <Link to='/forgot'>Forgotten Password?</Link>
             </Grid>
           </Grid>
           

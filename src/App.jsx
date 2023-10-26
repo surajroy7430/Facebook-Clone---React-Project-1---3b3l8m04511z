@@ -4,6 +4,7 @@ import './styles/App.css'
 import HomePage from './HomePage/HomePage';
 import Login from './components/Authentication/Login';
 import SignUp from './components/Authentication/SignUp';
+import Forgot from './components/Authentication/Forgot';
 
 const App = () => {
 
@@ -13,6 +14,7 @@ const App = () => {
           <Route path='/' element={<HomePage />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
+          <Route path='/forgot' element={<Forgot />} />
         </Routes>
     </div>
   )

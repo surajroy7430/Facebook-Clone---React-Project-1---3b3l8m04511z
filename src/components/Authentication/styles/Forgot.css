@@ -1,0 +1,27 @@
+.forgot-card {
+    background-color: #fff;
+    width: 500px;
+    margin-top: 64px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+hr.forgot_divider {
+    margin: 17px 0;
+}
+.forgotToolbar {
+    padding: 0px 20px;
+}
+.forgotForm {
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+a.facebookLogo{
+    margin-right: 700px;
+}
+button.submit-button {
+    background-color: #1877f2;
+    font-size: 18px;
+    padding: 5px 0px;
+}

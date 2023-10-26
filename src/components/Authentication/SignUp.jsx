@@ -3,6 +3,7 @@ import './styles/SignUp.css';
 import {
   FormControl,
   Input,
+  Divider,
   Button,
   Card,
   CardContent,
@@ -14,7 +15,6 @@ import {
   Radio,
   RadioGroup,
   FormControlLabel,
-  TextField,
 } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -88,56 +88,77 @@ const SignUp = () => {
       <Grid item xs={12} sm={8} md={6} lg={4}>
         <Card elevation={4} className="signup-card">
           <CardContent>
-              <Typography variant="h5">Create a new account</Typography>
+              <Typography variant="h5" style={{fontWeight: 'bold'}}>Create a new account</Typography>
               <Typography variant="subtitle1">It's quick and easy.</Typography>
+              <Divider style={{margin: '15px 0'}} />
               <form>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      variant="outlined"
-                      label="First Name"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                    />
+                    <FormControl fullWidth variant="outlined">
+                      <Input
+                        id="firstName"
+                        name="firstName"
+                        type="text"
+                        required
+                        placeholder='First Name'
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        disableUnderline
+                        style={{ border: '1px solid #ced4da', borderRadius: '4px', padding: '7px' }}
+                      />
+                    </FormControl>
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      variant="outlined"
-                      label="Last Name"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                    />
+                  <FormControl fullWidth variant="outlined">
+                      <Input
+                        id="lastName"
+                        name="lastName"
+                        type="text"
+                        required
+                        placeholder='Last Name'
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        disableUnderline
+                        style={{ border: '1px solid #ced4da', borderRadius: '4px', padding: '7px' }}
+                      />
+                    </FormControl>
                   </Grid>
                   <Grid item xs={12}>
-                    <TextField
-                      fullWidth
-                      variant="outlined"
-                      label="Email Address"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                    />
+                  <FormControl fullWidth variant="outlined">
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        placeholder='Email Address'
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        disableUnderline
+                        style={{ border: '1px solid #ced4da', borderRadius: '4px', padding: '7px' }}
+                      />
+                    </FormControl>
                   </Grid>
                   <Grid item xs={12}>
-                    <TextField
-                      fullWidth
-                      variant="outlined"
-                      label="Create Password"
-                      type="password"
-                      name="password"
-                      value={formData.password}
-                      onChange={handleInputChange}
-                    />
+                  <FormControl fullWidth variant="outlined">
+                      <Input
+                        id="password"
+                        name="password"
+                        type="text"
+                        required
+                        placeholder='Create Password'
+                        value={formData.password}
+                        onChange={handleInputChange}
+                        disableUnderline
+                        style={{ border: '1px solid #ced4da', borderRadius: '4px', padding: '7px' }}
+                      />
+                    </FormControl>
                   </Grid>
                   <Grid item xs={12}>
                     <InputLabel style={{textAlign: 'left'}}>Date of Birth</InputLabel>
                     <Grid container spacing={1}>
                       <Grid item xs={4}>
                         <FormControl fullWidth variant="outlined">
+                        <InputLabel>Day</InputLabel>
                         <Select
                         label="Day"
                         name="selectedDay"
@@ -150,6 +171,7 @@ const SignUp = () => {
                       </Grid>
                       <Grid item xs={4}>
                         <FormControl fullWidth variant="outlined">
+                        <InputLabel>Month</InputLabel>
                         <Select
                         label="Month"
                         name="selectedMonth"
@@ -166,13 +188,14 @@ const SignUp = () => {
                       </Grid>
                       <Grid item xs={4}>
                         <FormControl fullWidth variant="outlined">
+                        <InputLabel>Year</InputLabel>
                         <Select
                         label="Year"
                         name="selectedYear"
                         value={selectedYear}
                         onChange={(e) => setSelectedYear(e.target.value)}
                       >
-                        {Array.from({ length: 2024 - 1905 + 1 }, (_, index) => 1905 + index).map((year) => (
+                        {Array.from({ length: 2018 - 1905 + 1 }, (_, index) => 1905 + index).map((year) => (
                           <MenuItem key={year} value={year}>
                             {year}
                           </MenuItem>
@@ -183,20 +206,52 @@ const SignUp = () => {
                     </Grid>
                   </Grid>
                   <Grid item xs={12}>
+                    <InputLabel style={{textAlign: 'left'}}>Gender</InputLabel>
                     <FormControl fullWidth variant="outlined">
-                      <InputLabel>Gender</InputLabel>
-                      <Select
-                        label="Gender"
-                        name="gender"
-                        value={formData.gender}
-                        onChange={handleInputChange}
-                      >
-                        <MenuItem value="female">Female</MenuItem>
-                        <MenuItem value="male">Male</MenuItem>
-                        <MenuItem value="other">Other</MenuItem>
-                      </Select>
+                        <RadioGroup
+                          row
+                          name="gender"
+                          value={formData.gender}
+                          onChange={handleInputChange}
+                        >
+                          <Grid item xs={4}>
+                          <FormControlLabel
+                            value="female"
+                            control={<Radio color="primary" />}
+                            label="Female"
+                          />
+                          </Grid>
+                          <Grid item xs={4}>
+                          <FormControlLabel
+                            value="male"
+                            control={<Radio color="primary" />}
+                            label="Male"
+                          />
+                          </Grid>
+                          <Grid item xs={4}>
+                          <FormControlLabel
+                            value="other"
+                            control={<Radio color="primary" />}
+                            label="Other"
+                          />
+                          </Grid>
+                        </RadioGroup>
                     </FormControl>
                   </Grid>
+                  <Typography variant='div' className='policy'>
+                    <Typography>
+                      People who use our service may have uploaded your contact information to Facebook.&nbsp;
+                      <a>Learn more</a>.
+                    </Typography>
+                  </Typography>
+                  <Typography variant='div' className='policy'>
+                    <Typography>
+                      By clicking Sign Up, you agree to our&nbsp;
+                      <a>Terms</a>, <a>Privacy Policy</a> and <a>Cookies Policy</a>. 
+                      You may receive SMS notifications from us and can opt out at any time.
+                    </Typography>
+                  </Typography>
+
                   <Grid item xs={12}>
                     <Button
                       type="submit"
@@ -209,7 +264,7 @@ const SignUp = () => {
                     </Button>
                   </Grid>
                   <Grid item xs={12}>
-                    <Typography variant="body2">
+                    <Typography className='to-login'>
                       <Link to="/login">Already have an account?</Link>
                     </Typography>
                   </Grid>
