@@ -15,16 +15,11 @@ const SkeletonLoader = () => {
         <Stack spacing={1}>
           <Skeleton variant="text" height={100} />
           <Skeleton variant="text" height={20} />
-          <Skeleton variant="text" height={20} />
           <Skeleton variant="rectangular" height={300} />
+          <Skeleton variant="text" height={100} />
         </Stack>
       ) : (
         <>
-          <Posts />
-          <Posts />
-          <Posts />
-          <Posts />
-          <Posts />
           <Posts />
         </>
       )}

@@ -1,47 +1,36 @@
 import React, { useEffect, useState } from "react";
 import './Navbar.css';
 import { Link } from "react-router-dom";
-import { Mail, Notifications, Pets } from "@mui/icons-material";
+import { Games, Group, Home, Mail, MenuOutlined, Notifications, Person, SearchOutlined, Storefront } from "@mui/icons-material";
 import {
+  alpha,
   AppBar,
   Avatar,
   Badge,
   Box,
+  Button,
   InputBase,
   Menu,
   MenuItem,
   styled,
+  Switch,
+  Tab,
+  Tabs,
   Toolbar,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
-// import {ReactComponent as SearchIcon} from '../assets/searchicon.svg'
-// import {ReactComponent as BackIcon} from '../assets/arrowback.svg'
-// import {ReactComponent as HomeIcon} from '../assets/home.svg'
-// import {ReactComponent as FriendsIcon} from '../assets/friends.svg'
-// import {ReactComponent as GameIcon} from '../assets/game.svg'
-// import {ReactComponent as MarketIcon} from '../assets/market.svg'
-// import {ReactComponent as GroupsIcon} from '../assets/groups.svg'
-// import {ReactComponent as MenuIcon} from '../assets/menu.svg'
-// import {ReactComponent as MessengerIcon} from '../assets/messenger.svg'
-// import {ReactComponent as NotificationsIcon} from '../assets/notifications.svg'
-// import {ReactComponent as DefaultProfile} from '../assets/profile.svg'
+import { useAuth } from "../../utils/AuthStateContext";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
 });
 
-const Search = styled("div")(({ theme }) => ({
-  backgroundColor: "white",
-  padding: "0 10px",
-  borderRadius: theme.shape.borderRadius,
-  width: "40%",
-}));
-
 const Icons = styled(Box)(({ theme }) => ({
   display: "none",
   alignItems: "center",
-  gap: "20px",
   [theme.breakpoints.up("sm")]: {
     display: "flex",
   },
@@ -56,87 +45,122 @@ const UserBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-const Navbar =() => {
+const Navbar =({ mode, setMode }) => {
+  const { user } = useAuth();
   const [open, setOpen] = useState(false);
-  // const [notificationsOpen, setNotificationsOpen] = useState(false);
-  // const [profileDown, setProfileDown] = useState(false);
-  // const [users, setUsers] = useState([]);
-  // const [searchTerm, setSearchTerm] = useState('');
-  // const [filteredUsers, setFilteredUsers] = useState([]);
+  const [tabValue, setTabValue] = useState(0);
+  const theme = useTheme();
+  const isLG = useMediaQuery(theme.breakpoints.down('lg'));
+  const isMD = useMediaQuery(theme.breakpoints.down('md'));
+  const isSM = useMediaQuery(theme.breakpoints.down('sm'));
+  const [notificationsOpen, setNotificationsOpen] = useState(false);
 
-  // const renderNotifications = () => {
-  //   if (notificationsOpen) {
-  //     setNotificationsOpen(false)
-  //     document.getElementsByClassName('dropdown-content2')[0].classList.remove('block')
-  //   } else {
-  //     setNotificationsOpen(true)
-  //     setProfileDown(false)
-  //     document.getElementsByClassName('dropdown-content')[0].classList.remove('block');
-  //     document.getElementsByClassName('dropdown-content2')[0].classList.add('block');
-  //   }
-  // }
+  const headerTabs = [
+    {id: 1, icons: <Home />, link: '/', title: 'Home'},
+    {id: 2, icons: <Person />, link: '/', title: 'Friends'},
+    {id: 3, icons: <Storefront />, link: '/', title: 'Market Place'},
+    {id: 4, icons: <Group />, link: '/', title: 'Groups'},
+    {id: 5, icons: <Games />, link: '/', title: 'Gaming Zone'},
+  ];
 
-  // const renderProfile = () => {
-  //   if (profileDown) {
-  //     setProfileDown(false)
-  //     document.getElementsByClassName('dropdown-content')[0].classList.remove('block');
-  //   } else {
-  //     setProfileDown(true);
-  //     setNotificationsOpen(false)
-  //     document.getElementsByClassName('dropdown-content2')[0].classList.remove('block');
-  //     document.getElementsByClassName('dropdown-content')[0].classList.add('block');
-  //   }
-  // }
+  const Search = styled('div')(({ theme }) => ({
+        display: 'flex',
+        position: 'relative',
+        borderRadius: '30px',
+        border: '1px solid #979797',
+        backgroundColor: alpha(theme.palette.common.white, 1),
+        '&:hover': {
+            backgroundColor: alpha(theme.palette.common.white, 1)
+        },
+        width: '70%',
+        [theme.breakpoints.up('sm')]: {
+            marginLeft: theme.spacing(3),
+            width: 'auto',
+        },
+    }));
+    const SearchIconWrapper = styled('div')(({ theme }) => ({
+        padding: theme.spacing(0, 2),
+        height: '100%',
+        position: 'absolute',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    }));
 
-  // const collapseNavbar = () => {
-  //   document.getElementsByClassName('navbar__logo')[0].style.display = 'block';
-  //   document.getElementsByClassName('navbar__searchBack')[0].style.display = 'none';
-  //   document.getElementsByClassName('searchBox')[0].style.display = 'none';
-  //   document.getElementsByClassName('navbar__search')[0].style.display = 'block';
-  //   document.getElementsByClassName('dropdown-content3')[0].style.display = 'none';
-  //   document.getElementsByClassName('searchBox')[0].value = ""
-  // }
-
-  // const expandNavbar = () => {
-  //   document.getElementsByClassName('navbar__logo')[0].style.display = 'none';
-  //   document.getElementsByClassName('navbar__searchBack')[0].style.display = 'block';
-  //   document.getElementsByClassName('navbar__search')[0].style.display = 'none';
-  //   document.getElementsByClassName('searchBox')[0].style.display = 'block';
-  // }
-
-  // const updateSearchResults = (e) => {
-  //   setSearchTerm(e.target.value)
-  //   document.getElementsByClassName('dropdown-content3')[0].style.display = 'block';
-  // }
+    const StyledInputBase = styled(InputBase)(({ theme }) => ({
+        color: '#979797',
+        '& .MuiInputBase-input': {
+            padding: theme.spacing(1, 1, 1, 0),
+            transition: theme.transitions.create('width'),
+            width: '70%',
+            [theme.breakpoints.up('md')]: {
+                width: '20ch',
+            },
+        },
+    }));
 
 
   return (
     <AppBar position="sticky">
       <StyledToolbar>
-        <Typography variant="h6" sx={{ display: { xs: "none", sm: "block" } }}>
-          
-        </Typography>
-        <Pets sx={{ display: { xs: "block", sm: "none" } }} />
-        <Search>
-          <InputBase placeholder="search..." />
-        </Search>
+        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          <Typography>
+            <img src="https://i.ibb.co/72dN4JJ/Facebook-icon-2019-1.png" className="navbar__logo" />
+          </Typography>
+          <Search>
+            <Button>
+                <SearchIconWrapper>
+                    <SearchOutlined style={{color: '#979797'}} />
+                </SearchIconWrapper>
+            </Button>
+            <StyledInputBase 
+                placeholder='Search...' 
+                inputProps={{ 'aria-label': 'search' }} 
+                sx={{color: '#979797'}}
+            />
+          </Search>
+        </div>
+        {!isMD && (
+        <Tabs 
+          value={tabValue} 
+          indicatorColor=''
+          TabIndicatorProps={{style: {backgroundColor: "white", height: 4}}}
+          onChange={(event, newValue) => setTabValue(newValue)}
+        >
+          {headerTabs.map(tab => (
+              <Tab 
+                  key={tab.id}
+                  LinkComponent={Link} 
+                  to={tab.link}
+                  label={tab.icons}
+                  title={tab.title} 
+                  style={{color: 'white'}}
+              />
+          ))}
+        </Tabs>
+        )}
         <Icons>
-          <Badge >
-            <Mail />
-          </Badge>
-          <Badge >
-            <Notifications />
-          </Badge>
-          <Avatar
-            sx={{ width: 30, height: 30 }}
-            src=""
-            onClick={(e) => setOpen(true)}
-          />
+          <Button>
+            <Badge >
+              <Mail sx={{color: 'white'}} />
+            </Badge>
+          </Button>
+          <Button>
+            <Badge >
+              <Notifications sx={{color: 'white'}} />
+            </Badge>
+          </Button>
+          <Button>
+            <Avatar
+              sx={{ width: 30, height: 30 }}
+              src=""
+              onClick={(e) => setOpen(true)}
+            />
+          </Button>
         </Icons>
         <UserBox onClick={(e) => setOpen(true)}>
-          <Avatar
+          <MenuOutlined
             sx={{ width: 30, height: 30 }}
-            src=""
           />
           <Typography variant="span"></Typography>
         </UserBox>
@@ -155,63 +179,16 @@ const Navbar =() => {
           horizontal: "right",
         }}
       >
-        <MenuItem>Profile</MenuItem>
-        <MenuItem>My Account</MenuItem>
+        {/* <MenuItem>{user.name}</MenuItem> */}
+        <MenuItem>My Profile</MenuItem>
+        <MenuItem>Dark Mode
+          <Switch onChange={(e) => setMode(mode === "light" ? "dark" : "light")} />
+        </MenuItem>
         <MenuItem>Logout</MenuItem>
       </Menu>
     </AppBar>
-    // <div id="navbar">
-    //   <div className="navbar-LogoAndSearch">
-    //     <Link to="/">
-    //       <img src="https://i.ibb.co/72dN4JJ/Facebook-icon-2019-1.png" className="navbar__logo" />
-    //     </Link>
-    //     <div className="navbar__searchBack" onClick={collapseNavbar}>
-    //       <BackIcon className="searchBackIcon" />
-    //     </div>
-    //     <div className="navbar__search" onClick={expandNavbar}>
-    //       <SearchIcon className="searchIcon" />
-    //     </div>
-    //     <input type="search" className="searchBox" placeholder="Search Facebook" value='' onChange={updateSearchResults} />
-    //     <div className="dropdown-content3">
-    //       <ul id="list">
-            
-    //       </ul>
-    //     </div>
-    //   </div>
 
-    //   <div className="navbar__pages">
-    //     <div className="home">
-    //       <Link to="/"><HomeIcon title="Home" /></Link>
-    //     </div>
-    //     <div className="friends">
-    //       <FriendsIcon title="Friends" />
-    //     </div>
-    //     <div className="market">
-    //       <MarketIcon title="MarketPlace" />
-    //     </div>
-    //     <div className="groups">
-    //       <GroupsIcon title="Groups" />
-    //     </div>
-    //     <div className="gaming">
-    //       <GameIcon title='Gaming'/>
-    //     </div>
-    //   </div>
 
-    //   <div className="navbar__otherIcons">
-    //     <div className="round">
-    //       <MenuIcon className='addIcon' title="Menu" />
-    //     </div>
-
-    //     <div className="round">
-    //       <MessengerIcon className="messengerIcon" title="Messenger" />
-    //     </div>
-
-    //     <div className="round" onClick={renderNotifications}>
-    //       <NotificationsIcon className={`notificationsIcon ${notificationsOpen && "blue"}`} title="Notifications" />
-    //     </div>
-    //     <div className="dropdown-content2">
-    //       <h1>Notifications</h1>
-    //     </div>
     //     <div className="round" onClick={renderProfile}>
     //       <DefaultProfile className={`dropdownIcon ${profileDown === true}`} title="Account" />
     //       <div className="dropdown-content">

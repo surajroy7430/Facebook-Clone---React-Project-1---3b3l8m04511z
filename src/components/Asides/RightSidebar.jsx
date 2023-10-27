@@ -16,7 +16,7 @@ import {
   const RightSidebar = () => {
     return (
       <Box flex={2} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
-        <Box position="fixed" width={300}>
+        <Box position="fixed" width={350}>
           <Typography variant="h6" fontWeight={100}>
             Online Friends
           </Typography>
@@ -103,7 +103,7 @@ import {
             }
           />
         </ListItem>
-        <Divider variant="inset" component="li" />
+        <Divider sx={{margin: '5px 0'}} />
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
             <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
@@ -125,7 +125,7 @@ import {
             }
           />
         </ListItem>
-        <Divider variant="inset" component="li" />
+        <Divider sx={{margin: '5px 0'}} />
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
             <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />

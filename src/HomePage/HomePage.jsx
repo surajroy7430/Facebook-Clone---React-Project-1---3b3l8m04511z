@@ -5,6 +5,7 @@ import RightSidebar from '../components/Asides/RightSidebar';
 import LeftSidebar from '../components/Asides/LeftSidebar';
 import SkeletonLoader from '../components/Loader/SkeletonLoader';
 import PostUpload from '../components/Posts/PostUpload';
+// import ImageUpload from '../components/ImageUpload';
 
 const HomePage = () => {
   const [mode, setMode] = useState("light");
@@ -18,13 +19,22 @@ const HomePage = () => {
   return (
     <ThemeProvider theme={darkTheme}>
       <Box bgcolor={"background.default"} color={"text.primary"}>
-        <Navbar />
+        <Navbar setMode={setMode} mode={mode} />
+        
+        {/* <ImageUpload /> */}
         <Stack direction="row" spacing={2} justifyContent="space-between">
-          <LeftSidebar setMode={setMode} mode={mode}/>
-          <SkeletonLoader />
+          <LeftSidebar/>
+          <div 
+            style={{display: 'flex', flexDirection: 'column'}}
+          > 
+            <PostUpload /> 
+            <SkeletonLoader />
+          </div>
+          
           <RightSidebar />
         </Stack>
-        <PostUpload />
+        
+        
       </Box>
     </ThemeProvider>
   )

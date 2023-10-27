@@ -1,93 +1,72 @@
 import {
-    AccountBox,
-    Article,
+    Bookmark,
+    EventSharp,
     Group,
-    Home,
+    LocalHospital,
     ModeNight,
-    Person,
-    Settings,
+    Newspaper,
     Storefront,
-  } from "@mui/icons-material";
-  import {
+} from "@mui/icons-material";
+import {
     Box,
     List,
     ListItem,
-    ListItemButton,
     ListItemIcon,
     ListItemText,
     Switch,
-  } from "@mui/material";
-  import React from "react";
+    useMediaQuery,
+    useTheme,
+} from "@mui/material";
+import React from "react";
 import { Link } from "react-router-dom";
   
-  const LeftSidebar = ({ mode, setMode }) => {
+  const LeftSidebar = () => {
+    const theme = useTheme();
+    const isMD = useMediaQuery(theme.breakpoints.down('md'));
+
+    if(isMD) {
+      return null;
+    }
+
     return (
       <Box flex={1} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
-        <Box position="fixed">
+        <Box position="fixed" width={250}>
           <List>
-            <ListItem disablePadding>
-              <ListItemButton LinkComponent={Link} to="/">
-                <ListItemIcon>
-                  <Home />
-                </ListItemIcon>
-                <ListItemText primary="Homepage" />
-              </ListItemButton>
+            <ListItem LinkComponent={Link} to="/">
+              <ListItemIcon>
+                <LocalHospital />
+              </ListItemIcon>
+              <ListItemText primary="Covid-19 Info" />
             </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton LinkComponent={Link} to="/">
-                <ListItemIcon>
-                  <Article />
-                </ListItemIcon>
-                <ListItemText primary="Pages" />
-              </ListItemButton>
+            <ListItem LinkComponent={Link} to="/">
+              <ListItemIcon>
+                <Bookmark />
+              </ListItemIcon>
+              <ListItemText primary="Saved" />
             </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton LinkComponent={Link} to="/">
-                <ListItemIcon>
-                  <Group />
-                </ListItemIcon>
-                <ListItemText primary="Groups" />
-              </ListItemButton>
+            <ListItem LinkComponent={Link} to="/">
+              <ListItemIcon>
+                <Group />
+              </ListItemIcon>
+              <ListItemText primary="Groups" />
             </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton LinkComponent={Link} to="/">
-                <ListItemIcon>
-                  <Storefront />
-                </ListItemIcon>
-                <ListItemText primary="Marketplace" />
-              </ListItemButton>
+            <ListItem LinkComponent={Link} to="/">
+              <ListItemIcon>
+                <Storefront />
+              </ListItemIcon>
+              <ListItemText primary="Marketplace" />
             </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton LinkComponent={Link} to="/">
-                <ListItemIcon>
-                  <Person />
-                </ListItemIcon>
-                <ListItemText primary="Friends" />
-              </ListItemButton>
+            <ListItem LinkComponent={Link} to="/">
+              <ListItemIcon>
+                <Newspaper />
+              </ListItemIcon>
+              <ListItemText primary="Feeds" />
             </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton LinkComponent={Link} to="/">
-                <ListItemIcon>
-                  <Settings />
-                </ListItemIcon>
-                <ListItemText primary="Settings" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton LinkComponent={Link} to="/">
-                <ListItemIcon>
-                  <AccountBox />
-                </ListItemIcon>
-                <ListItemText primary="Profile" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <ModeNight />
-                </ListItemIcon>
-                <Switch onChange={(e) => setMode(mode === "light" ? "dark" : "light")}/>
-              </ListItemButton>
+            <ListItem LinkComponent={Link} to="/">
+              <ListItemIcon>
+                <EventSharp />
+              </ListItemIcon>
+              <ListItemText primary="Events" />
             </ListItem>
           </List>
         </Box>

@@ -9,9 +9,11 @@ import {
     TextField,
     Tooltip,
     Typography,
+    Container,
+    Grid,
   } from "@mui/material";
 import React, { useState } from "react";
-import { Add as AddIcon, EmojiEmotions, Image, PersonAdd, VideoCameraBack } from "@mui/icons-material";
+import { AddAPhoto, Add as AddIcon, EmojiEmotions, Image, LiveTv, PersonAdd, VideoCameraBack } from "@mui/icons-material";
 import { Box } from "@mui/system";
   
 const SytledModal = styled(Modal)({
@@ -31,9 +33,50 @@ const PostUpload = () => {
     const [open, setOpen] = useState(false);
     return (
       <>
-        <Tooltip
+      <Container maxWidth="sm">
+      <Box
+            width={500}
+            variant='outlined'
+            bgcolor={"background.default"}
+            color={"text.primary"}
+            p={3}
+            m={3}
+            borderRadius={3}
+            border={1}
+            onClick={(e) => setOpen(true)}
+          >
+            <UserBox>
+              <Avatar
+                // sx={{ width: 30, height: 30 }}
+              />
+              <TextField
+                    fullWidth
+                    variant="outlined"
+                    placeholder={`What's on your mind, ${'displayName'}?`}
+                  />
+            </UserBox>
+            <Stack direction="row" gap={1} justifyContent='space-between'>
+            <Grid item>
+                    <Button >
+                      <LiveTv /> Live video
+                    </Button>
+                  </Grid>
+                  <Grid item>
+                    <Button >
+                      <AddAPhoto /> Photo/Video
+                    </Button>
+                  </Grid>
+                  <Grid item>
+                    <Button >
+                      <EmojiEmotions /> Feeling/Activity
+                    </Button>
+                    </Grid>
+            </Stack>
+          </Box>
+    </Container>
+        {/* <Tooltip
           onClick={(e) => setOpen(true)}
-          title="Delete"
+          title="Post"
           sx={{
             position: "fixed",
             bottom: 20,
@@ -43,7 +86,7 @@ const PostUpload = () => {
           <Fab color="primary" aria-label="add">
             <AddIcon />
           </Fab>
-        </Tooltip>
+        </Tooltip> */}
         <SytledModal
           open={open}
           onClose={(e) => setOpen(false)}
