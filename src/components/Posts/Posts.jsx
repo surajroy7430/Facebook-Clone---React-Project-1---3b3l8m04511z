@@ -17,41 +17,43 @@ import {
 import { ModeCommentOutlined, MoreVert, Share, ThumbUp, ThumbUpOutlined } from "@mui/icons-material";
 import { useAuth } from "../../utils/AuthStateContext";
 
-const Posts = () => {
+const Posts = (props) => {
+  const { likeCount, commentCount, content,
+    author: { name, profileImage } = {},
+    channel,
+  } = props;
+
   const { user } = useAuth();
-  const [likeCount, setLikeCount] = useState(0);
-  const [commentCount, setCommentCount] = useState(0);
+  const [lkeCount, setLikeCount] = useState(0);
+  const [comCount, setCommentCount] = useState(0);
   const theme = useTheme();
   const isLG = useMediaQuery(theme.breakpoints.down('lg'));
   const isMD = useMediaQuery(theme.breakpoints.down('md'));
 
-
   return (
-    <Card sx={{ margin: 4, width: '500px' }} variant='outlined'>
+    <Card sx={{ margin: 4 }} variant='outlined'>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: "red" }} aria-label="recipe"></Avatar>
+          <Avatar src={profileImage} alt={name} />
         }
         action={
           <IconButton aria-label="settings">
             <MoreVert />
           </IconButton>
         }
-        title="NME"
-        subheader="September 14, 2022"
+        title={name}
+        subheader="22 August, 2023"
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
+          {content}
         </Typography>
       </CardContent>
       <CardMedia
         component="img"
         height="20%"
-        image="https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        alt="Paella dish"
+        image={channel.image}
+        alt={channel.name}
       />
       <CardContent sx={{display: 'flex', justifyContent: 'space-between'}}>
         <Typography color="text.primary">

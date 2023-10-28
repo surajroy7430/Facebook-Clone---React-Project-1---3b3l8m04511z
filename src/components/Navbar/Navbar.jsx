@@ -153,7 +153,7 @@ const Navbar =({ mode, setMode }) => {
           <Button>
             <Avatar
               sx={{ width: 30, height: 30 }}
-              src=""
+              src={user && user.profileImage}
               onClick={(e) => setOpen(true)}
             />
           </Button>
@@ -179,7 +179,7 @@ const Navbar =({ mode, setMode }) => {
           horizontal: "right",
         }}
       >
-        {/* <MenuItem>{user.name}</MenuItem> */}
+        <MenuItem>{user && user.name}</MenuItem>
         <MenuItem>My Profile</MenuItem>
         <MenuItem>Dark Mode
           <Switch onChange={(e) => setMode(mode === "light" ? "dark" : "light")} />

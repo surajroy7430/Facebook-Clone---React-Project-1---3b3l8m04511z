@@ -2,19 +2,18 @@ import {
     Avatar,
     Button,
     ButtonGroup,
-    Fab,
     Modal,
     Stack,
     styled,
     TextField,
-    Tooltip,
     Typography,
     Container,
     Grid,
   } from "@mui/material";
 import React, { useState } from "react";
-import { AddAPhoto, Add as AddIcon, EmojiEmotions, Image, LiveTv, PersonAdd, VideoCameraBack } from "@mui/icons-material";
+import { Collections, EmojiEmotions, Image, LiveTv, PersonAdd, VideoCameraBack } from "@mui/icons-material";
 import { Box } from "@mui/system";
+import { useAuth } from "../../utils/AuthStateContext";
   
 const SytledModal = styled(Modal)({
     display: "flex",
@@ -30,12 +29,12 @@ const UserBox = styled(Box)({
 });
   
 const PostUpload = () => {
+  const { user } = useAuth();
     const [open, setOpen] = useState(false);
     return (
       <>
       <Container maxWidth="sm">
       <Box
-            width={500}
             variant='outlined'
             bgcolor={"background.default"}
             color={"text.primary"}
@@ -43,50 +42,38 @@ const PostUpload = () => {
             m={3}
             borderRadius={3}
             border={1}
-            onClick={(e) => setOpen(true)}
           >
             <UserBox>
               <Avatar
-                // sx={{ width: 30, height: 30 }}
+                src={user && user.profileImage}
               />
               <TextField
-                    fullWidth
-                    variant="outlined"
-                    placeholder={`What's on your mind, ${'displayName'}?`}
-                  />
+                fullWidth
+                variant="outlined"
+                sx={{borderRadius: '30px'}}
+                placeholder={`What's on your mind, ${user && user.name}?`}
+                onClick={(e) => setOpen(true)}
+              />
             </UserBox>
             <Stack direction="row" gap={1} justifyContent='space-between'>
-            <Grid item>
-                    <Button >
-                      <LiveTv /> Live video
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button >
-                      <AddAPhoto /> Photo/Video
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button >
-                      <EmojiEmotions /> Feeling/Activity
-                    </Button>
-                    </Grid>
+              <Grid item>
+                <Button onClick={(e) => setOpen(true)}>
+                  <LiveTv sx={{color: 'red'}} />&nbsp;<span style={{color: 'gray'}}>Live video</span>
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button onClick={(e) => setOpen(true)}>
+                  <Collections sx={{color: 'green'}} />&nbsp;<span style={{color: 'gray'}}>Photo/Video</span>
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button onClick={(e) => setOpen(true)}>
+                  <EmojiEmotions sx={{color: 'yellow'}} />&nbsp;<span style={{color: 'gray'}}>Feeling/Activity</span>
+                </Button>
+              </Grid>
             </Stack>
           </Box>
     </Container>
-        {/* <Tooltip
-          onClick={(e) => setOpen(true)}
-          title="Post"
-          sx={{
-            position: "fixed",
-            bottom: 20,
-            left: { xs: "calc(50% - 25px)", md: 30 },
-          }}
-        >
-          <Fab color="primary" aria-label="add">
-            <AddIcon />
-          </Fab>
-        </Tooltip> */}
         <SytledModal
           open={open}
           onClose={(e) => setOpen(false)}
@@ -106,11 +93,11 @@ const PostUpload = () => {
             </Typography>
             <UserBox>
               <Avatar
-                src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src={user && user.profileImage}
                 sx={{ width: 30, height: 30 }}
               />
               <Typography fontWeight={500} variant="span">
-                NAME
+                {user && user.name}
               </Typography>
             </UserBox>
             <TextField

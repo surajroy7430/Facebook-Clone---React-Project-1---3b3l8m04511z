@@ -1,24 +1,48 @@
 import React, { useState } from 'react'
 import './styles/Login.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Card, CardContent, TextField, Button, Container, Typography, Grid, Divider, FormControl, InputLabel, Input, InputAdornment, IconButton } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { useAuth } from '../../utils/AuthStateContext';
+import { loginAuth } from '../../utils/APIs';
 
 const Login = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('');
+  const { loginUser } = useAuth();
+  const [userInfo, setUserInfo] = useState({
+      email: '', 
+      password: '',
+  });
+  const navigate = useNavigate();
 
-    const handleLogin = (e) => {
-        e.preventDefault();
-    }
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUserInfo({ 
+        ...userInfo, 
+        [name]: value 
+    });
+  }
 
-    const [showPassword, setShowPassword] = useState(false);
-    const handleClickShowPassword = () => {
-      setShowPassword((show) => !show);
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const formData = await loginAuth(userInfo);
+      loginUser(formData);
+
+      navigate('/');
+
+    } catch (error) {
+        console.error(error);
     }
-    const handleMouseDownPassword = (event) => {
-      event.preventDefault();
-    }
+  }
+  
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => {
+    setShowPassword((show) => !show);
+  }
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  }
     
   return (
     <div className="login-container">
@@ -39,10 +63,11 @@ const Login = () => {
               <Input
                 id="email"
                 type="email"
+                name="email"
                 placeholder="Email Address"
                 autoComplete="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={userInfo.email}
+                onChange={handleInputChange}
                 fullWidth
                 disableUnderline
                 style={{ border: '1px solid #ced4da', borderRadius: '4px', padding: '10px' }}
@@ -54,8 +79,8 @@ const Login = () => {
                 name='password' 
                 placeholder='Password'
                 autoComplete="off"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={userInfo.password}
+                onChange={handleInputChange}
                 disableUnderline
                 style={{ border: '1px solid #ced4da', borderRadius: '4px', padding: '10px' }}
                 type={showPassword ? 'text' : 'password'} 

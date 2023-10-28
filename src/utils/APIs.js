@@ -5,9 +5,23 @@ const BASE_URL = 'https://academics.newtonschool.co/api/v1';
 const configById = getHeaderWithProjectId();
 const configByIdAndBody = getHeaderWithProjectIDAndBody();
 
+//posts
+export const FetchPosts = async(limit) => {
+  try {
+      const res = await axios.get(`${BASE_URL}/facebook/post?limit=${limit}`, 
+        configById
+      )
+      
+      return res.data.data;
+  }
+  catch (error) {
+      throw error.response.data.message;
+  }
+};
+
 // Function to log in a user
 export const loginAuth = async(userInfo) => {
-  userInfo.appType = 'social';
+  userInfo.appType = 'facebook';
   try {
       const res = await axios.post(`${BASE_URL}/user/login`, 
         userInfo, 
@@ -23,7 +37,7 @@ export const loginAuth = async(userInfo) => {
 
 // Function to sign up a user
 export const signupAuth = async (userInfo, navigate) => {
-  userInfo.appType = 'social';
+  userInfo.appType = 'facebook';
   try {
       const res = await axios.post(`${BASE_URL}/user/signup`, 
         userInfo, 
