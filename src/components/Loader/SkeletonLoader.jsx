@@ -1,5 +1,6 @@
 import { Box, Stack, Skeleton } from "@mui/material";
 import React, { useState, useEffect } from "react";
+import './Loader.css'
 import Posts from "../Posts/Posts";
 import PostUpload from "../Posts/PostUpload";
 import { FetchPosts } from "../../utils/APIs";
@@ -37,7 +38,7 @@ const SkeletonLoader = () => {
   }, [2000]);
 
   return (
-    <Box flex={4} p={{ xs: 0, md: 2 }}>
+    <Box p={{ xs: 0, md: 2 }} className='feeds'>
       {loading ? (
         <Stack spacing={1}>
           <Skeleton variant="text" height={100} />
@@ -51,7 +52,6 @@ const SkeletonLoader = () => {
           {posts && posts.map((post, _id) => (
             <Posts key={_id} {...post} />
           ))}
-          
         </>
       )}
     </Box>

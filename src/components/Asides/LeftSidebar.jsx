@@ -1,6 +1,7 @@
 import {
     Bookmark,
     EventSharp,
+    ExpandMore,
     Group,
     LocalHospital,
     ModeNight,
@@ -10,6 +11,8 @@ import {
 import {
   Avatar,
     Box,
+    Button,
+    Divider,
     List,
     ListItem,
     ListItemIcon,
@@ -18,22 +21,48 @@ import {
     useMediaQuery,
     useTheme,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import './Sidebar.css'
 import { Link } from "react-router-dom";
 import { useAuth } from "../../utils/AuthStateContext";
+import { FetchPosts } from "../../utils/APIs";
   
 const LeftSidebar = () => {
   const { user } = useAuth();
   const theme = useTheme();
   const isMD = useMediaQuery(theme.breakpoints.down('md'));
+  const [users, setUsers] = useState([]);
+  const limit = 50;
+
+  useEffect(() => {
+    const fetchData = async() => {
+      try {
+        const usersData = await FetchPosts(limit);
+
+        const filteredUsers = usersData.reduce((accumulator, currentUser) => {
+          if (!accumulator[currentUser.author.name]) {
+            accumulator[currentUser.author.name] = currentUser;
+          }
+          return accumulator;
+        }, {});
+
+        setUsers(Object.values(filteredUsers));
+        // console.log('filteredUsers', filteredUsers);
+      } catch (error) {
+        console.log("Error: ", error);
+      }
+    }
+
+    fetchData();
+  }, [])
 
   if(isMD) {
     return null;
   }
 
   return (
-      <Box flex={1} p={2}>
-        <Box position="fixed" width={250}>
+      <Box className="sidebar">
+        <Box className="sidebarWrapper">
           <List>
             <ListItem components={Link} to="/">
               <ListItemIcon>
@@ -77,6 +106,19 @@ const LeftSidebar = () => {
               </ListItemIcon>
               <ListItemText primary="Events" />
             </ListItem>
+          </List>
+          <Button sx={{color: 'black'}}>
+            <ExpandMore />
+            See More
+          </Button>
+          <Divider />
+          <List>
+            {users && users.map((user) => (
+              <ListItem key={user.author._id}>
+                <Avatar src={user.author.profileImage} alt='' />&nbsp;
+                <ListItemText primary={user.author.name} />
+              </ListItem>
+            ))}
           </List>
         </Box>
       </Box>

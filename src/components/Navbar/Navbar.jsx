@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './Navbar.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Games, Group, Home, Mail, MenuOutlined, Notifications, Person, SearchOutlined, Storefront } from "@mui/icons-material";
 import {
   alpha,
@@ -46,7 +46,7 @@ const UserBox = styled(Box)(({ theme }) => ({
 }));
 
 const Navbar =({ mode, setMode }) => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [open, setOpen] = useState(false);
   const [tabValue, setTabValue] = useState(0);
   const theme = useTheme();
@@ -55,6 +55,8 @@ const Navbar =({ mode, setMode }) => {
   const isSM = useMediaQuery(theme.breakpoints.down('sm'));
   const [notificationsOpen, setNotificationsOpen] = useState(false);
 
+  const navigate = useNavigate();
+
   const headerTabs = [
     {id: 1, icons: <Home />, link: '/', title: 'Home'},
     {id: 2, icons: <Person />, link: '/', title: 'Friends'},
@@ -62,6 +64,10 @@ const Navbar =({ mode, setMode }) => {
     {id: 4, icons: <Group />, link: '/', title: 'Groups'},
     {id: 5, icons: <Games />, link: '/', title: 'Gaming Zone'},
   ];
+
+  const handleLogout = () => {
+    logout();
+  }
 
   const Search = styled('div')(({ theme }) => ({
         display: 'flex',
@@ -180,57 +186,13 @@ const Navbar =({ mode, setMode }) => {
         }}
       >
         <MenuItem>{user && user.name}</MenuItem>
-        <MenuItem>My Profile</MenuItem>
+        <MenuItem onClick={() => navigate('/profile')}>My Profile</MenuItem>
         <MenuItem>Dark Mode
           <Switch onChange={(e) => setMode(mode === "light" ? "dark" : "light")} />
         </MenuItem>
-        <MenuItem>Logout</MenuItem>
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
     </AppBar>
-
-
-    //     <div className="round" onClick={renderProfile}>
-    //       <DefaultProfile className={`dropdownIcon ${profileDown === true}`} title="Account" />
-    //       <div className="dropdown-content">
-    //         <Link to="#">
-    //           <div className="optionDrop">
-    //             <img src="https://i.ibb.co/1zmBtwr/84241059-189132118950875-4138507100605120512-n.jpg" alt="profile" className="Avatar" />
-    //             <div className="sideinfoDropAvatar">
-    //               <p>See your profile</p>
-    //             </div>
-    //           </div>
-    //         </Link>
-    //         <div className="hr" />
-            
-    //         <div/>
-    //         <Link to="#">
-    //           <div className="optionDrop">
-    //             <div className="iconDrop">
-    //               <i className="settings" />
-    //             </div>
-    //             <h1>Settings & Privacy</h1>
-    //           </div>
-    //         </Link>
-    //         <Link to="#">
-    //           <div className="optionDrop">
-    //             <div className="iconDrop">
-    //               <i className="darkMode" />
-    //             </div>
-    //             <h1>Dark Mode</h1>
-    //           </div>
-    //         </Link>
-    //         <Link to="#">
-    //           <div className="optionDrop">
-    //             <div className="iconDrop">
-    //               <i className="logout" />
-    //             </div>
-    //             <h1>Log out</h1>
-    //           </div>
-    //         </Link>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div >
   )
 }
 

@@ -24,11 +24,17 @@ const Posts = (props) => {
   } = props;
 
   const { user } = useAuth();
-  const [lkeCount, setLikeCount] = useState(0);
-  const [comCount, setCommentCount] = useState(0);
+  const [like, setLike] = useState(likeCount);
+  const [isLiked, setIsLiked] = useState(false);
+  const [comment, setComment] = useState(0);
   const theme = useTheme();
   const isLG = useMediaQuery(theme.breakpoints.down('lg'));
   const isMD = useMediaQuery(theme.breakpoints.down('md'));
+
+  const handleLikes = () => {
+    setLike(isLiked ? like-1 : like+1);
+    setIsLiked(!isLiked);
+  }
 
   return (
     <Card sx={{ margin: 4 }} variant='outlined'>
@@ -57,18 +63,19 @@ const Posts = (props) => {
       />
       <CardContent sx={{display: 'flex', justifyContent: 'space-between'}}>
         <Typography color="text.primary">
-          {likeCount > 0 ? `${likeCount} liked` : null}
+          {like > 0 ? `${like} liked` : null}
         </Typography>
         <Typography color="text.primary">
           {commentCount > 0 ? `${commentCount} comments` : null}
         </Typography>
       </CardContent>
-      {likeCount || commentCount > 0 ? <Divider /> : null }
+      {like || commentCount > 0 ? <Divider /> : null }
       <CardActions sx={{justifyContent: 'space-between'}}>
         <Button aria-label="like">
           <Checkbox
             icon={<ThumbUpOutlined />}
             checkedIcon={<ThumbUp sx={{ color: "blue" }} />}
+            onClick={handleLikes}
           /> Like
         </Button>
         <Button aria-label="comment">

@@ -1,6 +1,7 @@
 import {
     Avatar,
     AvatarGroup,
+    Badge,
     Box,
     Divider,
     ImageList,
@@ -10,146 +11,91 @@ import {
     ListItemAvatar,
     ListItemText,
     Typography,
-  } from "@mui/material";
-  import React from "react";
+    styled,
+  } 
+from "@mui/material";
+import React, { useEffect, useState } from "react";
+import './Sidebar.css'
+import { FetchPosts } from "../../utils/APIs";
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    backgroundColor: '#44b700',
+    color: '#44b700',
+    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+    '&::after': {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      borderRadius: '50%',
+      animation: 'ripple 1.2s infinite ease-in-out',
+      border: '1px solid currentColor',
+      content: '""',
+    },
+  },
+  '@keyframes ripple': {
+    '0%': {
+      transform: 'scale(.8)',
+      opacity: 1,
+    },
+    '100%': {
+      transform: 'scale(2.4)',
+      opacity: 0,
+    },
+  },
+}));
   
-  const RightSidebar = () => {
+const RightSidebar = () => {
+    const [users, setUsers] = useState([]);
+    const limit = 50;
+
+    useEffect(() => {
+      const fetchData = async() => {
+        try {
+          const usersData = await FetchPosts(limit);
+
+          const filteredUsers = usersData.reduce((accumulator, currentUser) => {
+            if (!accumulator[currentUser.author.name]) {
+              accumulator[currentUser.author.name] = currentUser;
+            }
+            return accumulator;
+          }, {});
+
+          setUsers(Object.values(filteredUsers));
+          // console.log('filteredUsers', filteredUsers);
+        } catch (error) {
+          console.log("Error: ", error);
+        }
+      }
+
+      fetchData();
+    }, [])
+    
     return (
-      <Box flex={2} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
-        <Box position="fixed" width={350}>
-          <Typography variant="h6" fontWeight={100}>
-            Online Friends
-          </Typography>
-          <AvatarGroup max={7}>
-            <Avatar
-              alt="Remy Sharp"
-              src="https://material-ui.com/static/images/avatar/1.jpg"
-            />
-            <Avatar
-              alt="Travis Howard"
-              src="https://material-ui.com/static/images/avatar/2.jpg"
-            />
-            <Avatar
-              alt="Cindy Baker"
-              src="https://material-ui.com/static/images/avatar/3.jpg"
-            />
-            <Avatar alt="Agnes Walker" src="" />
-            <Avatar
-              alt="Trevor Henderson"
-              src="https://material-ui.com/static/images/avatar/6.jpg"
-            />
-            <Avatar
-              alt="Trevor Henderson"
-              src="https://material-ui.com/static/images/avatar/7.jpg"
-            />
-            <Avatar
-              alt="Trevor Henderson"
-              src="https://material-ui.com/static/images/avatar/8.jpg"
-            />
-            <Avatar
-              alt="Trevor Henderson"
-              src="https://material-ui.com/static/images/avatar/7.jpg"
-            />
-            <Avatar
-              alt="Trevor Henderson"
-              src="https://material-ui.com/static/images/avatar/8.jpg"
-            />
-          </AvatarGroup>
-          <Typography variant="h6" fontWeight={100} mt={2} mb={2}>
-            Latest Photos
-          </Typography>
-          <ImageList cols={3} rowHeight={100} gap={5}>
-            <ImageListItem>
-              <img
-                src="https://material-ui.com/static/images/image-list/breakfast.jpg"
-                alt=""
-              />
-            </ImageListItem>
-            <ImageListItem>
-              <img
-                src="https://material-ui.com/static/images/image-list/burgers.jpg"
-                alt=""
-              />
-            </ImageListItem>
-            <ImageListItem>
-              <img
-                src="https://material-ui.com/static/images/image-list/camera.jpg"
-                alt=""
-              />
-            </ImageListItem>
-          </ImageList>
-          <Typography variant="h6" fontWeight={100} mt={2}>
-            Latest Conversations
-          </Typography>
-          <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src="https://material-ui.com/static/images/avatar/3.jpg" />
-          </ListItemAvatar>
-          <ListItemText
-            primary="Brunch this weekend?"
-            secondary={
-              <React.Fragment>
-                <Typography
-                  sx={{ display: 'inline' }}
-                  component="span"
-                  variant="body2"
-                  color="text.primary"
+        <Box className="sidebar">
+          <Box className='sidebarWrapper'>
+            <img src='' alt='' />
+            <Typography variant="h5">
+              Online friends
+            </Typography>
+            <List>
+            {users && users.slice(8, 15).map((user) => (
+              <ListItem key={user.author._id}>
+                <StyledBadge
+                  overlap="circular"
+                  anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+                  variant="dot"
                 >
-                  Ali Connors
-                </Typography>
-                {" — I'll be in your neighborhood doing errands this…"}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-        <Divider sx={{margin: '5px 0'}} />
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-          </ListItemAvatar>
-          <ListItemText
-            primary="Summer BBQ"
-            secondary={
-              <React.Fragment>
-                <Typography
-                  sx={{ display: 'inline' }}
-                  component="span"
-                  variant="body2"
-                  color="text.primary"
-                >
-                  to NAME1, NAME2 ETC.
-                </Typography>
-                {" — Wish I could come, but I'm out of town this…"}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-        <Divider sx={{margin: '5px 0'}} />
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-          </ListItemAvatar>
-          <ListItemText
-            primary="Oui Oui"
-            secondary={
-              <React.Fragment>
-                <Typography
-                  sx={{ display: 'inline' }}
-                  component="span"
-                  variant="body2"
-                  color="text.primary"
-                >
-                  Sandra Adams
-                </Typography>
-                {' — Do you have Paris recommendations? Have you ever…'}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-      </List>
+                  <Avatar src={user.author.profileImage} alt='' />
+                </StyledBadge>&nbsp;
+                <ListItemText primary={user.author.name} />
+              </ListItem>
+            ))}
+            </List>
+          </Box>
         </Box>
-      </Box>
     );
   };
   
