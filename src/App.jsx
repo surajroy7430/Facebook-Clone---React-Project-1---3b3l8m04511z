@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './styles/App.css'
+import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './HomePage/HomePage';
 import Login from './components/Authentication/Login';
 import SignUp from './components/Authentication/SignUp';
 import Forgot from './components/Authentication/Forgot';
 import { useAuth } from './utils/AuthStateContext';
 import Profile from './components/ProfilePage/Profile';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   const { user } = useAuth();
@@ -26,6 +28,7 @@ const App = () => {
   }
   return (
     <div id="main">
+      <ToastContainer autoClose={1000} />
         <Routes>
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />

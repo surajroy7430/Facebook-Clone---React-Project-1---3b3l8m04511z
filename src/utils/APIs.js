@@ -57,23 +57,36 @@ export const signupAuth = async (userInfo, navigate) => {
   }
 };
 
-// Function to update password
-export const updatePasswordAuth = async (
-  name,
-  email,
-  currentPassword,
-  newPassword
-) => {
+// Function to like a post
+export const PostLikeApi = async(postId, token) => {
   try {
-    const response = await axios.patch(`${BASE_URL}/user/updateMyPassword`, 
-    {
-      name,
-      email,
-      passwordCurrent: currentPassword,
-      password: newPassword,
-    });
-    return response.data;
-  } catch (error) {
-    throw error;
+      const res = await axios.post(
+        `${BASE_URL}/facebook/like/${postId}`, 
+        getAuthHeaderConfig(token)
+      )
+      
+      return res.data.data;
+  }
+  catch (error) {
+      throw error.response.data.message;
   }
 };
+
+// Function to create a page
+export const createPageApi = async(pageData, token) => {
+  try {
+      const res = await axios.post(
+        `${BASE_URL}/facebook/channel`,
+        pageData, 
+        getAuthHeaderConfig(token)
+      )
+      
+      return res.data.data;
+  }
+  catch (error) {
+      throw error.response.data.message;
+  }
+};
+
+
+

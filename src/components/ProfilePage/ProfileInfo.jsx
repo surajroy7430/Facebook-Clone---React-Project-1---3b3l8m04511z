@@ -53,7 +53,7 @@ const ProfileInfo = () => {
         <Typography className="rightbarTitle">FRIENDS</Typography>
         <Box className="rightbarFollowings">
           {users && users.slice(20, 50).map((user) => (
-            <Box className="rightbarFollowing">
+            <Box className="rightbarFollowing" key={user._id}>
               <img
                 src={user.author.profileImage}
                 alt=""

@@ -18,6 +18,7 @@ import {
 } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { signupAuth } from '../../utils/APIs';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
   const [userInfo, setUserInfo] = useState({
@@ -81,7 +82,8 @@ const SignUp = () => {
         gender: '',
       })
   } catch (error) {
-      console.error(error);
+      // console.error(error);
+      toast.error(error);
   }
   }
 

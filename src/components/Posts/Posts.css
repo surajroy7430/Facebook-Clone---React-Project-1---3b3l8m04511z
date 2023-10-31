@@ -1,0 +1,5 @@
+p.commentsCount:hover,
+p.likesCount:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

@@ -1,4 +1,4 @@
-const PROJECT_ID = '3b3l8m04511z';
+const PROJECT_ID = "3b3l8m04511z";
 
 export const getHeaderWithProjectId = () => {
     return {
@@ -18,8 +18,8 @@ export const getHeaderWithProjectIDAndBody = () => {
 export const getAuthHeaderConfig = (token) => {
     return {
         headers: {
+            projectId: PROJECT_ID,
             Authorization: `Bearer ${token}`,
-            projectID: PROJECT_ID,
         },
     };
 };

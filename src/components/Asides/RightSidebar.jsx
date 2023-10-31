@@ -3,6 +3,7 @@ import {
     AvatarGroup,
     Badge,
     Box,
+    Button,
     Divider,
     ImageList,
     ImageListItem,
@@ -17,6 +18,8 @@ from "@mui/material";
 import React, { useEffect, useState } from "react";
 import './Sidebar.css'
 import { FetchPosts } from "../../utils/APIs";
+import { Add } from "@mui/icons-material";
+import Pages from "../PagesCreation/Pages";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -50,6 +53,15 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const RightSidebar = () => {
     const [users, setUsers] = useState([]);
     const limit = 50;
+    const [isCreatePageModalOpen, setCreatePageModalOpen] = useState(false);
+
+    const handleCreatePageClick = () => {
+      setCreatePageModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+      setCreatePageModalOpen(false);
+    };
 
     useEffect(() => {
       const fetchData = async() => {
@@ -76,6 +88,11 @@ const RightSidebar = () => {
     return (
         <Box className="sidebar">
           <Box className='sidebarWrapper'>
+            <Button variant="contained" onClick={handleCreatePageClick} sx={{marginBottom: '20px'}}>
+              <Add />&nbsp;
+              Create a Page
+            </Button>
+            {isCreatePageModalOpen && <Pages open={isCreatePageModalOpen} onClose={handleCloseModal} />}
             <img src='' alt='' />
             <Typography variant="h5">
               Online friends

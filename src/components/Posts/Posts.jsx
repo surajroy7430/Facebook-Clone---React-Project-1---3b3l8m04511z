@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Posts.css';
 import {
   Avatar,
   Card,
@@ -16,9 +17,10 @@ import {
 } from "@mui/material";
 import { ModeCommentOutlined, MoreVert, Share, ThumbUp, ThumbUpOutlined } from "@mui/icons-material";
 import { useAuth } from "../../utils/AuthStateContext";
+import { PostLikeApi } from "../../utils/APIs";
 
 const Posts = (props) => {
-  const { likeCount, commentCount, content,
+  const { _id, likeCount, commentCount, content,
     author: { name, profileImage } = {},
     channel,
   } = props;
@@ -31,9 +33,18 @@ const Posts = (props) => {
   const isLG = useMediaQuery(theme.breakpoints.down('lg'));
   const isMD = useMediaQuery(theme.breakpoints.down('md'));
 
-  const handleLikes = () => {
-    setLike(isLiked ? like-1 : like+1);
-    setIsLiked(!isLiked);
+  const handleLikes = async () => {
+  const authToken = localStorage.getItem('authToken');
+    try {
+      // Call API to like/unlike the post
+      await PostLikeApi(_id, authToken);
+
+      // Update local state based on the API response
+      setLike(isLiked ? like - 1 : like + 1);
+      setIsLiked(!isLiked);
+    } catch (error) {
+      console.error("Error liking post:", error);
+    }
   }
 
   return (
@@ -62,10 +73,10 @@ const Posts = (props) => {
         alt={channel.name}
       />
       <CardContent sx={{display: 'flex', justifyContent: 'space-between'}}>
-        <Typography color="text.primary">
+        <Typography color="text.primary" className="likesCount">
           {like > 0 ? `${like} liked` : null}
         </Typography>
-        <Typography color="text.primary">
+        <Typography color="text.primary" className="commentsCount">
           {commentCount > 0 ? `${commentCount} comments` : null}
         </Typography>
       </CardContent>

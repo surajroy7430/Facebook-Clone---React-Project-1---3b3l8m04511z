@@ -14,9 +14,16 @@ export const AuthStateContext = ({ children }) => {
     // Check if the user is already logged in on component mount
     useEffect(() => {
         if (authToken && storedUser) {
-            setUser(JSON.parse(storedUser));
-            setIsLoggedIn(true);
-
+            try {
+                const parsedUser = JSON.parse(storedUser);
+                setUser(parsedUser);
+                setIsLoggedIn(true);
+            } catch (error) {
+                localStorage.removeItem('userInfo');
+                setIsLoggedIn(false);
+                console.error(error);
+            }
+            
         } else {
             setIsLoggedIn(false);
         }

@@ -5,6 +5,7 @@ import { Card, CardContent, TextField, Button, Container, Typography, Grid, Divi
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useAuth } from '../../utils/AuthStateContext';
 import { loginAuth } from '../../utils/APIs';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const { loginUser } = useAuth();
@@ -32,7 +33,8 @@ const Login = () => {
       navigate('/');
 
     } catch (error) {
-        console.error(error);
+        // console.error(error);
+        toast.error(error);
     }
   }
   

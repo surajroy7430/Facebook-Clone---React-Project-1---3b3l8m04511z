@@ -76,12 +76,12 @@ const Navbar =({ mode, setMode }) => {
         border: '1px solid #979797',
         backgroundColor: alpha(theme.palette.common.white, 1),
         '&:hover': {
-            backgroundColor: alpha(theme.palette.common.white, 1)
+          backgroundColor: alpha(theme.palette.common.white, 0.9)
         },
         width: '70%',
         [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(3),
-            width: 'auto',
+          marginLeft: theme.spacing(3),
+          width: 'auto',
         },
     }));
     const SearchIconWrapper = styled('div')(({ theme }) => ({
@@ -100,7 +100,7 @@ const Navbar =({ mode, setMode }) => {
             transition: theme.transitions.create('width'),
             width: '70%',
             [theme.breakpoints.up('md')]: {
-                width: '20ch',
+              width: '20ch',
             },
         },
     }));
