@@ -1,0 +1,23 @@
+.pages{
+    display: flex;
+}
+
+.pagesWrapper{
+    flex: 4;
+}
+
+.pageCover{
+    background-color: #f0f2f5;
+    height: 320px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.pageCoverImg{
+    width: 80%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 0 0 10px 10px;
+}

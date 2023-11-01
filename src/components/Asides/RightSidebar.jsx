@@ -1,18 +1,15 @@
 import {
     Avatar,
-    AvatarGroup,
     Badge,
     Box,
     Button,
-    Divider,
-    ImageList,
-    ImageListItem,
     List,
     ListItem,
-    ListItemAvatar,
     ListItemText,
     Typography,
     styled,
+    useMediaQuery,
+    useTheme,
   } 
 from "@mui/material";
 import React, { useEffect, useState } from "react";
@@ -54,6 +51,8 @@ const RightSidebar = () => {
     const [users, setUsers] = useState([]);
     const limit = 50;
     const [isCreatePageModalOpen, setCreatePageModalOpen] = useState(false);
+    const theme = useTheme();
+    const isMD = useMediaQuery(theme.breakpoints.down('md'));
 
     const handleCreatePageClick = () => {
       setCreatePageModalOpen(true);
@@ -84,6 +83,10 @@ const RightSidebar = () => {
 
       fetchData();
     }, [])
+
+    if(isMD) {
+      return null;
+    }
     
     return (
         <Box className="sidebar">

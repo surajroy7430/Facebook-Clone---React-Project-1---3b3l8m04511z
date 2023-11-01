@@ -29,42 +29,6 @@ export const AuthStateContext = ({ children }) => {
         }
     }, []);
 
-    // useEffect(() => {
-    //     const fetchCartItems = async () => {
-    //         try {
-    //             const cartItems = await getCartProducts(authToken);
-    //             setCart(cartItems);
-    //             // console.log("cartItems", cartItems);
-    //         } catch (error) {
-    //             console.error(error);
-    //         }
-    //     };
-    //     fetchCartItems();
-
-    //     const fetchWishlistItems = async () => {
-    //         try {
-    //             const wishlistItems = await getWishListProducts(authToken);
-    //             setWishList(wishlistItems);
-    //             // console.log("wishlistItems", wishlistItems);
-    //         } catch (error) {
-    //             console.error(error);
-    //         }
-    //     };
-    //     fetchWishlistItems();
-
-    //     const fetchPlacedOrders = async () => {
-    //         try {
-    //             const placedItems = await getPlacedOrders(authToken);
-    //             setOrders(placedItems);
-    //             // console.log("placed Items", placedItems);
-    //         } catch (error) {
-    //             console.error(error);
-    //         }
-    //     };
-    //     fetchPlacedOrders();
-
-    // }, [authToken])
-
     const loginUser = (userdata) => {
         setUser(userdata.data);
         setIsLoggedIn(true);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import './Navbar.css';
 import { Link, useNavigate } from "react-router-dom";
 import { Games, Group, Home, Mail, MenuOutlined, Notifications, Person, SearchOutlined, Storefront } from "@mui/icons-material";
@@ -22,6 +22,8 @@ import {
   useTheme,
 } from "@mui/material";
 import { useAuth } from "../../utils/AuthStateContext";
+import { searchApi } from "../../utils/APIs";
+import { toast } from "react-toastify";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -47,13 +49,13 @@ const UserBox = styled(Box)(({ theme }) => ({
 
 const Navbar =({ mode, setMode }) => {
   const { user, logout } = useAuth();
-  const [open, setOpen] = useState(false);
   const [tabValue, setTabValue] = useState(0);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const searchInputRef = useRef(null);
   const theme = useTheme();
   const isLG = useMediaQuery(theme.breakpoints.down('lg'));
   const isMD = useMediaQuery(theme.breakpoints.down('md'));
   const isSM = useMediaQuery(theme.breakpoints.down('sm'));
-  const [notificationsOpen, setNotificationsOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -67,6 +69,13 @@ const Navbar =({ mode, setMode }) => {
 
   const handleLogout = () => {
     logout();
+  }
+
+  const handleAvatarClick = (event) => {
+    setAnchorElUser(event.currentTarget);
+  }
+  const handleClose = () => {
+    setAnchorElUser(null);
   }
 
   const Search = styled('div')(({ theme }) => ({
@@ -105,6 +114,27 @@ const Navbar =({ mode, setMode }) => {
         },
     }));
 
+    const handleSearch = async () => {
+      const searchTerm = searchInputRef.current.value.toLowerCase();
+      if(searchTerm) {
+          try {
+              const searchData = await searchApi(searchTerm, 'field');
+              // console.log('searchData', searchData);
+              if(searchData.length === 0) {
+                  toast.warn('No results found');
+              }
+              else {
+                  navigate(`/search/?field=${searchTerm}`);
+              }
+          } catch (error) {
+              toast.warn(error);
+          }
+      }
+      else {
+          toast.warn('Please enter a search term.');
+      }
+  }
+
 
   return (
     <AppBar position="sticky">
@@ -114,14 +144,15 @@ const Navbar =({ mode, setMode }) => {
             <img src="https://i.ibb.co/72dN4JJ/Facebook-icon-2019-1.png" className="navbar__logo" />
           </Typography>
           <Search>
-            <Button>
+            <Button onClick={handleSearch}>
                 <SearchIconWrapper>
                     <SearchOutlined style={{color: '#979797'}} />
                 </SearchIconWrapper>
             </Button>
             <StyledInputBase 
-                placeholder='Search...' 
+                placeholder='Search Facebook...' 
                 inputProps={{ 'aria-label': 'search' }} 
+                inputRef={searchInputRef} 
                 sx={{color: '#979797'}}
             />
           </Search>
@@ -146,7 +177,7 @@ const Navbar =({ mode, setMode }) => {
         </Tabs>
         )}
         <Icons>
-          <Button>
+          {/* <Button>
             <Badge >
               <Mail sx={{color: 'white'}} />
             </Badge>
@@ -155,16 +186,16 @@ const Navbar =({ mode, setMode }) => {
             <Badge >
               <Notifications sx={{color: 'white'}} />
             </Badge>
-          </Button>
+          </Button> */}
           <Button>
             <Avatar
               sx={{ width: 30, height: 30 }}
               src={user && user.profileImage}
-              onClick={(e) => setOpen(true)}
+              onClick={handleAvatarClick}
             />
           </Button>
         </Icons>
-        <UserBox onClick={(e) => setOpen(true)}>
+        <UserBox onClick={handleAvatarClick}>
           <MenuOutlined
             sx={{ width: 30, height: 30 }}
           />
@@ -172,21 +203,14 @@ const Navbar =({ mode, setMode }) => {
         </UserBox>
       </StyledToolbar>
       <Menu
-        id="demo-positioned-menu"
-        aria-labelledby="demo-positioned-button"
-        open={open}
-        onClose={(e) => setOpen(false)}
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
+        sx={{mt: '5px', zIndex: 999}}
+        open={Boolean(anchorElUser)}
+        anchorEl={anchorElUser}
+        onClose={handleClose}
       >
         <MenuItem>{user && user.name}</MenuItem>
         <MenuItem onClick={() => navigate('/profile')}>My Profile</MenuItem>
+        {/* <MenuItem onClick={() => navigate('/pages')}>My Page</MenuItem> */}
         <MenuItem>Dark Mode
           <Switch onChange={(e) => setMode(mode === "light" ? "dark" : "light")} />
         </MenuItem>

@@ -87,6 +87,61 @@ export const createPageApi = async(pageData, token) => {
       throw error.response.data.message;
   }
 };
+export const createPostsApi = async(postData, token) => {
+  try {
+      const res = await axios.post(
+        `${BASE_URL}/facebook/post`,
+        postData,
+        getAuthHeaderConfig(token)
+      )
+      
+      return res.data.data;
+  }
+  catch (error) {
+      throw error.response.data.message;
+  }
+};
+
+export const deletePostsApi = async(postId, token) => {
+  try {
+      const res = await axios.delete(
+        `${BASE_URL}/facebook/post/${postId}`,
+        getAuthHeaderConfig(token)
+      )
+      
+      return res.data.data;
+  }
+  catch (error) {
+      throw error.response.data.message;
+  }
+};
+
+export const fetchComments = async(postId, authToken) => {
+  try {
+      const res = await axios.get(`${BASE_URL}/facebook/post/${postId}/comments`, 
+        getAuthHeaderConfig(authToken)
+      )
+      
+      return res.data.data;
+  }
+  catch (error) {
+      throw error.response.data.message;
+  }
+};
+
+export const searchApi = async (searchTerm, field) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/facebook/post?search={"${field}":"${searchTerm}"}`, 
+      configById
+    );
+    return response.data.data;
+
+  } catch (error) {
+    throw error.response.data.message;
+  }
+};
+
 
 
 

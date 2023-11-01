@@ -36,12 +36,12 @@ const ProfileInfo = () => {
         <Box className="rightbarInfo">
           <Box className="rightbarInfoItem">
             <Typography className="rightbarInfoKey">City:
-              <span className="rightbarInfoValue"> New York</span>
+              <span className="rightbarInfoValue"> Delhi</span>
             </Typography>
           </Box>
           <Box className="rightbarInfoItem">
             <Typography className="rightbarInfoKey">From:
-              <span className="rightbarInfoValue"> Madrid</span>
+              <span className="rightbarInfoValue"> India</span>
             </Typography>
           </Box>
           <Box className="rightbarInfoItem">

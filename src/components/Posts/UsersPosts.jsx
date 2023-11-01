@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import './Posts.css';
 import {
   Avatar,
@@ -18,28 +18,19 @@ import {
   ListItem,
   ListItemText,
   Input,
-  Modal,
-  Box,
-  Dialog,
 } from "@mui/material";
 import { Close, ModeCommentOutlined, Share, ThumbUp, ThumbUpOutlined } from "@mui/icons-material";
 import { useAuth } from "../../utils/AuthStateContext";
-import { deletePostsApi, fetchComments } from "../../utils/APIs";
+import { deletePostsApi } from "../../utils/APIs";
 import { toast } from "react-toastify";
 
-const Posts = (props) => {
-  const { _id, likeCount, commentCount, content,
-    author: { name, profileImage } = {},
-    channel,
-  } = props;
-
+const UsersPosts = ({ postData, onDeletePost }) => {
+    const { _id, content, images } = postData;
   const { user } = useAuth();
   const token = localStorage.getItem("authToken");
-  const [like, setLike] = useState(likeCount);
+  const [like, setLike] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
-  const [comment, setComment] = useState(commentCount);
-  const [fetchedComment, setFetchedComment] = useState([]);
-  const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
+  const [comment, setComment] = useState(0);
   const theme = useTheme();
   const isLG = useMediaQuery(theme.breakpoints.down('lg'));
   const isMD = useMediaQuery(theme.breakpoints.down('md'));
@@ -59,30 +50,19 @@ const Posts = (props) => {
   const handleAddComment = () => {
     if (newComment.trim() !== "") {
       const updatedCommentList = [newComment, ...commentList];
+      setComment(comment+1)
       setCommentList(updatedCommentList);
-      setComment(comment+1);
       setNewComment(""); // Clear the input field
     }
   };
 
-  const fetchCommentsData = async() => {
-    setIsCommentModalOpen(true);
-    try {
-      const commentsData = await fetchComments(_id, token);
-
-      setFetchedComment(commentsData);
-      console.log('setFetchedComment', setFetchedComment);
-    } catch (error) {
-      console.log("Error: ", error);
-    }
-  }
-
   const deletePost = async () => {
     try {
       await deletePostsApi(_id, token);
+      onDeletePost(_id);
       toast.success("Deleted")
     } catch (error) {
-      // console.log("Error: ", error);
+    //   console.log("Error: ", error);
       toast.error(error)
     }
   }
@@ -91,32 +71,33 @@ const Posts = (props) => {
     <Card sx={{ margin: 4 }} variant='outlined'>
       <CardHeader
         avatar={
-          <Avatar src={profileImage} alt='' />
+          <Avatar src={user && user.profileImage} alt='' />
         }
         action={
           <IconButton aria-label="delete" title='Delete' onClick={deletePost}>
             <Close />
           </IconButton>
         }
-        title={name}
-        subheader="22 August, 2023"
+        title={user && user.name}
+        subheader={new Date().toDateString()}
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {content}
         </Typography>
       </CardContent>
-      <CardMedia
-        component="img"
-        height="20%"
-        image={channel.image}
-        alt={channel.name}
-      />
+      <div>
+        {images && images.map((image, i) => (
+            <div key={i+1} style={{display: 'flex', flexWrap: 'wrap'}}>
+                <CardMedia component='img' height="20%" image={image} />
+            </div>
+        ))}
+      </div>
       <CardContent sx={{display: 'flex', justifyContent: 'space-between'}}>
         <Typography color="text.primary" className="likesCount">
           {like > 0 ? `${like} liked` : null}
         </Typography>
-        <Typography color="text.primary" className="commentsCount" onClick={fetchCommentsData}>
+        <Typography color="text.primary" className="commentsCount">
           {comment > 0 ? `${comment} comments` : null}
         </Typography>
       </CardContent>
@@ -136,28 +117,6 @@ const Posts = (props) => {
           <Share />&nbsp;Share
         </Button>
       </CardActions>
-      <Dialog
-        open={isCommentModalOpen}
-        onClose={() => setIsCommentModalOpen(false)}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={{ width: 400, bgcolor: "background.paper", p: 3 }}>
-          <Typography variant="h6" id="modal-modal-title">
-            Comments
-          </Typography>
-          <List>
-            {fetchedComment.map((comment, index) => (
-              <ListItem key={index}>
-                <Avatar />
-                <ListItemText>
-                  <Typography sx={{marginLeft: '10px'}}>{comment.content}</Typography>
-                </ListItemText>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-      </Dialog>
         {isCommenting && (
           <CardContent>
             <Typography variant="div" style={{ margin: "5px 0", display: 'flex' }}>
@@ -193,4 +152,4 @@ const Posts = (props) => {
   );
 };
 
-export default Posts;
+export default UsersPosts;

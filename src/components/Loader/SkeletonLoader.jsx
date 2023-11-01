@@ -4,10 +4,12 @@ import './Loader.css'
 import Posts from "../Posts/Posts";
 import PostUpload from "../Posts/PostUpload";
 import { FetchPosts } from "../../utils/APIs";
+import UsersPosts from "../Posts/UsersPosts";
 
 const SkeletonLoader = () => {
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
+  // const [userPosts, setUserPosts] = useState([]);
   const limit = 50;
 
   useEffect(() => {
@@ -48,7 +50,12 @@ const SkeletonLoader = () => {
         </Stack>
       ) : (
         <>
-          <PostUpload /> 
+          <PostUpload />
+
+          {/* {userPosts && userPosts.map((userPost, _id) => (
+            <UsersPosts key={_id} postData={userPost} />
+          ))} */}
+
           {posts && posts.map((post, _id) => (
             <Posts key={_id} {...post} />
           ))}

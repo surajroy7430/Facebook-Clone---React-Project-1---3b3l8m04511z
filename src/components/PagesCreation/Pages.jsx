@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Modal, TextField, Typography, styled } from "@mui/material";
+import { Box, Button, Modal, TextField, Typography, styled } from "@mui/material";
 import React, { useState } from "react";
 import { createPageApi } from "../../utils/APIs";
 import { toast } from "react-toastify";
@@ -50,7 +50,6 @@ const Pages = ({open, onClose}) => {
         >
           <Box
             width={400}
-            height={500}
             bgcolor={"background.default"}
             color={"text.primary"}
             p={3}
@@ -59,7 +58,7 @@ const Pages = ({open, onClose}) => {
             <Typography variant="h5" color="gray" textAlign="center" sx={{fontWeight: 600}}>
               Create a Page
             </Typography>
-            <Typography variant="body2" color="gray" textAlign="center" marginBottom={1}>
+            <Typography variant="body2" color="gray" textAlign="center" marginBottom={2}>
               Your Page is where people go to learn more about you.
             </Typography>
             <TextField
@@ -90,8 +89,8 @@ const Pages = ({open, onClose}) => {
                 rows={3}
                 placeholder="Bio (optional)"
                 variant="outlined"
-                helperText="Tell people a little about what you do."
                 sx={{marginBottom: '20px'}}
+                helperText="Tell people a little about what you do."
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
             />

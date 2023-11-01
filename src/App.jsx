@@ -5,10 +5,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './HomePage/HomePage';
 import Login from './components/Authentication/Login';
 import SignUp from './components/Authentication/SignUp';
-import Forgot from './components/Authentication/Forgot';
 import { useAuth } from './utils/AuthStateContext';
 import Profile from './components/ProfilePage/Profile';
 import { ToastContainer } from 'react-toastify';
+import SearchResults from './components/Asides/SearchResults';
+// import PageData from './components/PagesCreation/PageData';
 
 const App = () => {
   const { user } = useAuth();
@@ -32,9 +33,10 @@ const App = () => {
         <Routes>
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
-          <Route path='/forgot' element={<Forgot />} />
+          <Route path='/search' element={<SearchResults />} />
           <Route path='/' element={user ? <HomePage /> : <Navigate to='/login' />} />
           <Route path='/profile' element={user ? <Profile /> : <Navigate to='/login' />} />
+          {/* <Route path='/pages' element={user ? <PageData /> : <Navigate to='/login' />} /> */}
         </Routes>
     </div>
   )

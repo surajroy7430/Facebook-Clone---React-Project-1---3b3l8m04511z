@@ -28,8 +28,8 @@ export default function Profile() {
                     <div className="profileCover">
                         <img
                             className="profileCoverImg"
-                            src=""
-                            alt=""
+                            src="https://eset-info.canon-its.jp/files/user/malware_info/images/special/160512/images/0.jpg"
+                            alt="profileCoverImg"
                         />
                         <Avatar
                             alt="Profile Picture"
