@@ -10,6 +10,7 @@ import {
     Grid,
   } from "@mui/material";
 import React, { useRef, useState } from "react";
+import './Posts.css'
 import { Collections, EmojiEmotions, Image, LiveTv, PersonAdd, VideoCameraBack } from "@mui/icons-material";
 import { Box } from "@mui/system";
 import { useAuth } from "../../utils/AuthStateContext";
@@ -95,10 +96,9 @@ const PostUpload = () => {
           variant='outlined'
           bgcolor={"background.default"}
           color={"text.primary"}
-          p={3}
-          m={3}
+          p={2}
           borderRadius={3}
-          border={1}
+          sx={{width: '360px', margin: 'auto', boxShadow: 4, border: '1px solid #c2c2c2'}}
         >
           <UserBox>
             <Avatar

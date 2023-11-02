@@ -60,15 +60,15 @@ const UsersPosts = ({ postData, onDeletePost }) => {
     try {
       await deletePostsApi(_id, token);
       onDeletePost(_id);
-      toast.success("Deleted")
+      // toast.success("Deleted")
     } catch (error) {
     //   console.log("Error: ", error);
-      toast.error(error)
+      // toast.error(error)
     }
   }
 
   return (
-    <Card sx={{ margin: 4 }} variant='outlined'>
+    <Card sx={{ margin: 4, border: '1px solid #c2c2c2', borderRadius: '8px' }} elevation={4}>
       <CardHeader
         avatar={
           <Avatar src={user && user.profileImage} alt='' />

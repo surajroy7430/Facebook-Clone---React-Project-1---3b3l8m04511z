@@ -3,3 +3,8 @@ p.likesCount:hover {
     text-decoration: underline;
     cursor: pointer;
 }
+
+div.postUploadBox {
+    width: 400;
+    /* margin: auto; */
+}

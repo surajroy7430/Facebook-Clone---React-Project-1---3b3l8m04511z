@@ -67,6 +67,19 @@ const Navbar =({ mode, setMode }) => {
     {id: 5, icons: <Games />, link: '/', title: 'Gaming Zone'},
   ];
 
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      setMode(storedTheme);
+    }
+  }, []);
+
+  const handleModeChange = () => {
+    const newMode = mode === "light" ? "dark" : "light";
+    setMode(newMode);
+    localStorage.setItem("theme", newMode);
+  };
+
   const handleLogout = () => {
     logout();
   }
@@ -124,7 +137,8 @@ const Navbar =({ mode, setMode }) => {
                   toast.warn('No results found');
               }
               else {
-                  navigate(`/search/?field=${searchTerm}`);
+                toast.warn('No Post found');
+                // navigate(`/search/?field=${searchTerm}`);
               }
           } catch (error) {
               toast.warn(error);
@@ -203,16 +217,15 @@ const Navbar =({ mode, setMode }) => {
         </UserBox>
       </StyledToolbar>
       <Menu
-        sx={{mt: '5px', zIndex: 999}}
         open={Boolean(anchorElUser)}
         anchorEl={anchorElUser}
         onClose={handleClose}
       >
         <MenuItem>{user && user.name}</MenuItem>
-        <MenuItem onClick={() => navigate('/profile')}>My Profile</MenuItem>
+        <MenuItem onClick={() => navigate('/profile')} onClose={handleClose}>My Profile</MenuItem>
         {/* <MenuItem onClick={() => navigate('/pages')}>My Page</MenuItem> */}
-        <MenuItem>Dark Mode
-          <Switch onChange={(e) => setMode(mode === "light" ? "dark" : "light")} />
+        <MenuItem onClick={handleModeChange}>
+          {mode === "light" ? "Dark Mode" : "Light Mode"}
         </MenuItem>
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>

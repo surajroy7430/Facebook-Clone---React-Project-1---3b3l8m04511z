@@ -80,15 +80,15 @@ const Posts = (props) => {
   const deletePost = async () => {
     try {
       await deletePostsApi(_id, token);
-      toast.success("Deleted")
+      // toast.success("Deleted")
     } catch (error) {
       // console.log("Error: ", error);
-      toast.error(error)
+      // toast.error(error)
     }
   }
 
   return (
-    <Card sx={{ margin: 4 }} variant='outlined'>
+    <Card sx={{ margin: 4, border: '1px solid #c2c2c2', borderRadius: '8px' }} elevation={4}>
       <CardHeader
         avatar={
           <Avatar src={profileImage} alt='' />
@@ -99,7 +99,7 @@ const Posts = (props) => {
           </IconButton>
         }
         title={name}
-        subheader="22 August, 2023"
+        subheader="Fri Sep 01 2023"
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
