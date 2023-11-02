@@ -103,11 +103,12 @@ const UsersPosts = ({ postData, onDeletePost }) => {
       </CardContent>
       {like || comment > 0 ? <Divider /> : null }
       <CardActions sx={{justifyContent: 'space-between'}}>
-        <Button aria-label="like">
+        <Button aria-label="like" onClick={handleLikes}>
           <Checkbox
             icon={<ThumbUpOutlined />}
             checkedIcon={<ThumbUp sx={{ color: "blue" }} />}
-            onClick={handleLikes}
+            checked={isLiked}
+            onChange={handleLikes}
           /> Like
         </Button>
         <Button aria-label="comment" onClick={() => setIsCommenting(!isCommenting)}>
