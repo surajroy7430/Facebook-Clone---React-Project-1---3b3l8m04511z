@@ -112,7 +112,7 @@ const Login = () => {
           </form>
           <Grid container justifyContent="center" className='forgotten'>
             <Grid item className='forgotten'>
-              <Link to='/forgot'>Forgotten Password?</Link>
+              <Link>Forgotten Password?</Link>
             </Grid>
           </Grid>
           
