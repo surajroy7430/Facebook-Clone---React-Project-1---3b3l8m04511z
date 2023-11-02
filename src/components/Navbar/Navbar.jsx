@@ -155,7 +155,11 @@ const Navbar =({ mode, setMode }) => {
       <StyledToolbar>
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <Typography>
-            <img src="https://i.ibb.co/72dN4JJ/Facebook-icon-2019-1.png" className="navbar__logo" />
+            <img 
+              src="https://i.ibb.co/72dN4JJ/Facebook-icon-2019-1.png" 
+              className="navbar__logo" 
+              onClick={() => navigate('/')}
+            />
           </Typography>
           <Search>
             <Button onClick={handleSearch}>
