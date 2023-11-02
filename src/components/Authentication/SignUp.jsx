@@ -207,7 +207,7 @@ const SignUp = () => {
                         value={selectedYear}
                         onChange={(e) => setSelectedYear(e.target.value)}
                       >
-                        {Array.from({ length: 2018 - 1905 + 1 }, (_, index) => 1905 + index).map((year) => (
+                        {Array.from({ length: 2018 - 1970 + 1 }, (_, index) => 1970 + index).map((year) => (
                           <MenuItem key={year} value={year}>
                             {year}
                           </MenuItem>
