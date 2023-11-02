@@ -6,5 +6,8 @@ p.likesCount:hover {
 
 div.postUploadBox {
     width: 400;
-    /* margin: auto; */
+}
+.userPostName:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }

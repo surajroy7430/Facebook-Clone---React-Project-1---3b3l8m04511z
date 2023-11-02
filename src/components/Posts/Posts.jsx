@@ -24,14 +24,12 @@ import {
 } from "@mui/material";
 import { Close, ModeCommentOutlined, Share, ThumbUp, ThumbUpOutlined } from "@mui/icons-material";
 import { useAuth } from "../../utils/AuthStateContext";
-import { deletePostsApi, fetchComments } from "../../utils/APIs";
+import { deletePostsApi, fetchComments, viewUserProfile } from "../../utils/APIs";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Posts = (props) => {
-  const { _id, likeCount, commentCount, content,
-    author: { name, profileImage } = {},
-    channel,
-  } = props;
+  const { _id, likeCount, commentCount, author, content, channel } = props;
 
   const { user } = useAuth();
   const token = localStorage.getItem("authToken");
@@ -43,6 +41,8 @@ const Posts = (props) => {
   const theme = useTheme();
   const isLG = useMediaQuery(theme.breakpoints.down('lg'));
   const isMD = useMediaQuery(theme.breakpoints.down('md'));
+
+  const navigate = useNavigate();
 
   const handleLikes = async () => {
     setLike(isLiked ? like - 1 : like + 1);
@@ -77,6 +77,17 @@ const Posts = (props) => {
     }
   }
 
+  const showUserDetails = async() => {
+    try {
+      const userProfileData = await viewUserProfile(author._id, token)
+      console.log(userProfileData);
+
+      navigate(`/user/${userProfileData._id}`);
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  }
+
   const deletePost = async () => {
     try {
       await deletePostsApi(_id, token);
@@ -91,14 +102,14 @@ const Posts = (props) => {
     <Card sx={{ margin: 4, border: '1px solid #c2c2c2', borderRadius: '8px' }} elevation={4}>
       <CardHeader
         avatar={
-          <Avatar src={profileImage} alt='' />
+          <Avatar src={author.profileImage} alt='' />
         }
         action={
           <IconButton aria-label="delete" title='Delete' onClick={deletePost}>
             <Close />
           </IconButton>
         }
-        title={name}
+        title={<span className="userPostName" onClick={showUserDetails}>{author.name}</span>}
         subheader="Fri Sep 01 2023"
       />
       <CardContent>
@@ -180,7 +191,7 @@ const Posts = (props) => {
             <List sx={{marginLeft: '15px'}}>
               {commentList.map((comment, i) => (
                 <ListItem key={i}>
-                  <Avatar src={user && user.profileImage} alt={user && user.name}  />
+                  <Avatar src={user && user.profileImage} alt=''  />
                   <ListItemText sx={{marginLeft: '10px'}}>
                     <Typography sx={{fontWeight: '600'}}>{user && user.name}</Typography>
                     <Typography>{comment}</Typography>

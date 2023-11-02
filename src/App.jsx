@@ -9,6 +9,7 @@ import { useAuth } from './utils/AuthStateContext';
 import Profile from './components/ProfilePage/Profile';
 import { ToastContainer } from 'react-toastify';
 import SearchResults from './components/Asides/SearchResults';
+import UsersProfile from './components/ProfilePage/UsersProfile';
 // import PageData from './components/PagesCreation/PageData';
 
 const App = () => {
@@ -36,6 +37,7 @@ const App = () => {
           <Route path='/search' element={<SearchResults />} />
           <Route path='/' element={user ? <HomePage /> : <Navigate to='/login' />} />
           <Route path='/profile' element={user ? <Profile /> : <Navigate to='/login' />} />
+          <Route path='/user/:id' element={user ? <UsersProfile /> : <Navigate to='/login' />} />
           {/* <Route path='/pages' element={user ? <PageData /> : <Navigate to='/login' />} /> */}
         </Routes>
     </div>

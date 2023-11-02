@@ -141,6 +141,19 @@ export const searchApi = async (searchTerm, field) => {
     throw error.response.data.message;
   }
 };
+
+export const viewUserProfile = async(userId, authToken) => {
+  try {
+      const res = await axios.get(`${BASE_URL}/facebook/user/${userId}`, 
+        getAuthHeaderConfig(authToken)
+      )
+      
+      return res.data.data;
+  }
+  catch (error) {
+      throw error.response.data.message;
+  }
+};
 ///
 
 

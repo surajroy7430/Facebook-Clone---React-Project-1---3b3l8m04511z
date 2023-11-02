@@ -35,7 +35,7 @@ export default function Profile() {
                             <div className="profileCover">
                                 <img
                                     className="profileCoverImg"
-                                    src="https://eset-info.canon-its.jp/files/user/malware_info/images/special/160512/images/0.jpg"
+                                    src="https://www.profilerehab.com/facebook_covers/abstract/lens_blur_cover_38.jpg"
                                     alt="profileCoverImg"
                                 />
                                 <Avatar
@@ -60,7 +60,7 @@ export default function Profile() {
                                 </Typography>
                             </div>
                         </div>
-                        <Divider />
+                        <Divider sx={{marginTop: '20px', marginBottom: '10px'}} />
                         <div className="profileRightBottom">
                             <ProfileInfo />
                         </div>
