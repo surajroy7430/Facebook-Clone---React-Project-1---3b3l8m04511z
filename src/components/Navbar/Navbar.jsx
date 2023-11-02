@@ -223,6 +223,7 @@ const Navbar =({ mode, setMode }) => {
       >
         <MenuItem>{user && user.name}</MenuItem>
         <MenuItem onClick={() => navigate('/profile')} onClose={handleClose}>My Profile</MenuItem>
+        <MenuItem onClick={() => navigate('/')} onClose={handleClose}>Home</MenuItem>
         {/* <MenuItem onClick={() => navigate('/pages')}>My Page</MenuItem> */}
         <MenuItem onClick={handleModeChange}>
           {mode === "light" ? "Dark Mode" : "Light Mode"}
