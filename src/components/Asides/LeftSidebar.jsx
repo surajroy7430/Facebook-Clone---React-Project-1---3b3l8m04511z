@@ -107,7 +107,7 @@ const LeftSidebar = () => {
               <ListItemText primary="Events" />
             </ListItem>
           </List>
-          <Button sx={{color: 'black'}}>
+          <Button sx={{color: 'grey'}}>
             <ExpandMore />
             See More
           </Button>
