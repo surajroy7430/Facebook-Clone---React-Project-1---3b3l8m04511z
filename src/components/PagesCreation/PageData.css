@@ -1,5 +1,6 @@
 .pages{
     display: flex;
+    margin-bottom: 150px;
 }
 
 .pagesWrapper{
@@ -7,7 +8,6 @@
 }
 
 .pageCover{
-    background-color: #f0f2f5;
     height: 320px;
     position: relative;
     display: flex;

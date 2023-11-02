@@ -172,23 +172,23 @@ const Navbar =({ mode, setMode }) => {
           </Search>
         </div>
         {!isMD && (
-        <Tabs 
-          value={tabValue} 
-          indicatorColor=''
-          TabIndicatorProps={{style: {backgroundColor: "white", height: 4}}}
-          onChange={(event, newValue) => setTabValue(newValue)}
-        >
-          {headerTabs.map(tab => (
-              <Tab 
-                  key={tab.id}
-                  LinkComponent={Link} 
-                  to={tab.link}
-                  label={tab.icons}
-                  title={tab.title} 
-                  style={{color: 'white'}}
-              />
-          ))}
-        </Tabs>
+          <Tabs 
+            value={tabValue} 
+            indicatorColor=''
+            TabIndicatorProps={{style: {backgroundColor: "white", height: 4}}}
+            onChange={(event, newValue) => setTabValue(newValue)}
+          >
+            {headerTabs.map(tab => (
+                <Tab 
+                    key={tab.id}
+                    LinkComponent={Link} 
+                    to={tab.link}
+                    label={tab.icons}
+                    title={tab.title} 
+                    style={{color: 'white'}}
+                />
+            ))}
+          </Tabs>
         )}
         <Icons>
           {/* <Button>

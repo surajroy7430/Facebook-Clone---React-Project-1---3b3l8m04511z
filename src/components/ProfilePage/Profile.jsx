@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Profile.css";
-import { Box, Typography, Avatar, ThemeProvider, createTheme } from "@mui/material";
+import { Box, Typography, Avatar, ThemeProvider, createTheme, Divider } from "@mui/material";
 import Navbar from "../Navbar/Navbar";
 import LeftSidebar from "../Asides/LeftSidebar";
 import SkeletonLoader from "../Loader/SkeletonLoader";
@@ -60,6 +60,7 @@ export default function Profile() {
                                 </Typography>
                             </div>
                         </div>
+                        <Divider />
                         <div className="profileRightBottom">
                             <ProfileInfo />
                         </div>
