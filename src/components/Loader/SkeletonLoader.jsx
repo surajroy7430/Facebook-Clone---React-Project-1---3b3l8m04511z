@@ -1,15 +1,13 @@
-import { Box, Stack, Skeleton } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import './Loader.css'
+import { Box, Stack, Skeleton } from "@mui/material";
 import Posts from "../Posts/Posts";
 import PostUpload from "../Posts/PostUpload";
 import { FetchPosts } from "../../utils/APIs";
-import UsersPosts from "../Posts/UsersPosts";
 
 const SkeletonLoader = () => {
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
-  // const [userPosts, setUserPosts] = useState([]);
   const limit = 50;
 
   useEffect(() => {
@@ -51,11 +49,6 @@ const SkeletonLoader = () => {
       ) : (
         <>
           <PostUpload />
-
-          {/* {userPosts && userPosts.map((userPost, _id) => (
-            <UsersPosts key={_id} postData={userPost} />
-          ))} */}
-
           {posts && posts.map((post, _id) => (
             <Posts key={_id} {...post} />
           ))}

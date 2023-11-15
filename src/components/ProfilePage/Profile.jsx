@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Profile.css";
+import "./styles/Profile.css";
 import { Box, Typography, Avatar, ThemeProvider, createTheme, Divider } from "@mui/material";
 import Navbar from "../Navbar/Navbar";
 import LeftSidebar from "../Asides/LeftSidebar";
@@ -10,7 +10,7 @@ import { theme as customTheme } from "../../styles/theme";
 
 export default function Profile() {
     const { user } = useAuth();
-    const storedTheme = localStorage.getItem("theme") || "light";
+    const storedTheme = sessionStorage.getItem("theme") || "light";
     const [mode, setMode] = useState(storedTheme);
 
     const darkTheme = createTheme({
@@ -20,7 +20,7 @@ export default function Profile() {
     });
 
     useEffect(() => {
-        localStorage.setItem("theme", mode);
+        sessionStorage.setItem("theme", mode);
     }, [mode]);
 
   return (
@@ -60,10 +60,12 @@ export default function Profile() {
                                 </Typography>
                             </div>
                         </div>
+
                         <Divider sx={{marginTop: '20px', marginBottom: '10px'}} />
                         <div className="profileRightBottom">
                             <ProfileInfo />
                         </div>
+
                         <SkeletonLoader />
                     </div>
                 </Box>

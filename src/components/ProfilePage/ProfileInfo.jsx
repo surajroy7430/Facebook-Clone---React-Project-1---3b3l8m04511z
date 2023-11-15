@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './ProfileInfo.css'
+import './styles/ProfileInfo.css'
 import { Box, Typography } from '@mui/material'
 import { FetchPosts } from '../../utils/APIs';
 

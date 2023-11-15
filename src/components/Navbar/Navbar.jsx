@@ -1,19 +1,25 @@
 import React, { useEffect, useRef, useState } from "react";
 import './Navbar.css';
 import { Link, useNavigate } from "react-router-dom";
-import { Games, Group, Home, Mail, MenuOutlined, Notifications, Person, SearchOutlined, Storefront } from "@mui/icons-material";
+import { 
+  Games, 
+  Group, 
+  Home, 
+  MenuOutlined, 
+  Person, 
+  SearchOutlined, 
+  Storefront 
+} from "@mui/icons-material";
 import {
   alpha,
   AppBar,
   Avatar,
-  Badge,
   Box,
   Button,
   InputBase,
   Menu,
   MenuItem,
   styled,
-  Switch,
   Tab,
   Tabs,
   Toolbar,
@@ -53,9 +59,7 @@ const Navbar =({ mode, setMode }) => {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const searchInputRef = useRef(null);
   const theme = useTheme();
-  const isLG = useMediaQuery(theme.breakpoints.down('lg'));
   const isMD = useMediaQuery(theme.breakpoints.down('md'));
-  const isSM = useMediaQuery(theme.breakpoints.down('sm'));
 
   const navigate = useNavigate();
 
@@ -68,7 +72,7 @@ const Navbar =({ mode, setMode }) => {
   ];
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
+    const storedTheme = sessionStorage.getItem("theme");
     if (storedTheme) {
       setMode(storedTheme);
     }
@@ -77,7 +81,7 @@ const Navbar =({ mode, setMode }) => {
   const handleModeChange = () => {
     const newMode = mode === "light" ? "dark" : "light";
     setMode(newMode);
-    localStorage.setItem("theme", newMode);
+    sessionStorage.setItem("theme", newMode);
   };
 
   const handleLogout = () => {
@@ -92,63 +96,61 @@ const Navbar =({ mode, setMode }) => {
   }
 
   const Search = styled('div')(({ theme }) => ({
-        display: 'flex',
-        position: 'relative',
-        borderRadius: '30px',
-        border: '1px solid #979797',
-        backgroundColor: alpha(theme.palette.common.white, 1),
-        '&:hover': {
-          backgroundColor: alpha(theme.palette.common.white, 0.9)
-        },
+    display: 'flex',
+    position: 'relative',
+    borderRadius: '30px',
+    border: '1px solid #979797',
+    backgroundColor: alpha(theme.palette.common.white, 1),
+    '&:hover': {
+      backgroundColor: alpha(theme.palette.common.white, 0.9)
+    },
+    width: '70%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(3),
+      width: 'auto',
+    },
+  }));
+  const SearchIconWrapper = styled('div')(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }));
+  const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: '#979797',
+    '& .MuiInputBase-input': {
+        padding: theme.spacing(1, 1, 1, 0),
+        transition: theme.transitions.create('width'),
         width: '70%',
-        [theme.breakpoints.up('sm')]: {
-          marginLeft: theme.spacing(3),
-          width: 'auto',
+        [theme.breakpoints.up('md')]: {
+          width: '20ch',
         },
-    }));
-    const SearchIconWrapper = styled('div')(({ theme }) => ({
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    }));
+    },
+  }));
 
-    const StyledInputBase = styled(InputBase)(({ theme }) => ({
-        color: '#979797',
-        '& .MuiInputBase-input': {
-            padding: theme.spacing(1, 1, 1, 0),
-            transition: theme.transitions.create('width'),
-            width: '70%',
-            [theme.breakpoints.up('md')]: {
-              width: '20ch',
-            },
-        },
-    }));
-
-    const handleSearch = async () => {
-      const searchTerm = searchInputRef.current.value.toLowerCase();
-      if(searchTerm) {
-          try {
-              const searchData = await searchApi(searchTerm, 'field');
-              // console.log('searchData', searchData);
-              if(searchData.length === 0) {
-                  toast.warn('No results found');
-              }
-              else {
-                toast.warn('No Post found');
-                // navigate(`/search/?field=${searchTerm}`);
-              }
-          } catch (error) {
-              toast.warn(error);
+  const handleSearch = async () => {
+    const searchTerm = searchInputRef.current.value.toLowerCase();
+    if(searchTerm) {
+      try {
+          const searchData = await searchApi(searchTerm, 'field');
+          // console.log('searchData', searchData);
+          if(searchData.length === 0) {
+              toast.warn('No results found');
           }
+          else {
+            toast.warn('No Post found');
+            // navigate(`/search/?field=${searchTerm}`);
+          }
+      } catch (error) {
+          toast.warn(error);
       }
-      else {
-          toast.warn('Please enter a search term.');
-      }
+    }
+    else {
+        toast.warn('Please enter a search term.');
+    }
   }
-
 
   return (
     <AppBar position="sticky">
@@ -163,15 +165,15 @@ const Navbar =({ mode, setMode }) => {
           </Typography>
           <Search>
             <Button onClick={handleSearch}>
-                <SearchIconWrapper>
-                    <SearchOutlined style={{color: '#979797'}} />
-                </SearchIconWrapper>
+              <SearchIconWrapper>
+                <SearchOutlined style={{color: '#979797'}} />
+              </SearchIconWrapper>
             </Button>
             <StyledInputBase 
-                placeholder='Search Facebook...' 
-                inputProps={{ 'aria-label': 'search' }} 
-                inputRef={searchInputRef} 
-                sx={{color: '#979797'}}
+              placeholder='Search Facebook...' 
+              inputProps={{ 'aria-label': 'search' }} 
+              inputRef={searchInputRef} 
+              sx={{color: '#979797'}}
             />
           </Search>
         </div>
@@ -183,28 +185,28 @@ const Navbar =({ mode, setMode }) => {
             onChange={(event, newValue) => setTabValue(newValue)}
           >
             {headerTabs.map(tab => (
-                <Tab 
-                    key={tab.id}
-                    LinkComponent={Link} 
-                    to={tab.link}
-                    label={tab.icons}
-                    title={tab.title} 
-                    style={{color: 'white'}}
-                />
+              <Tab 
+                key={tab.id}
+                LinkComponent={Link} 
+                to={tab.link}
+                label={tab.icons}
+                title={tab.title} 
+                style={{color: 'white'}}
+              />
             ))}
           </Tabs>
         )}
         <Icons>
-          {/* <Button>
-            <Badge >
-              <Mail sx={{color: 'white'}} />
-            </Badge>
-          </Button>
-          <Button>
-            <Badge >
-              <Notifications sx={{color: 'white'}} />
-            </Badge>
-          </Button> */}
+        {/* <Button>
+          <Badge >
+            <Mail sx={{color: 'white'}} />
+          </Badge>
+        </Button>
+        <Button>
+          <Badge >
+            <Notifications sx={{color: 'white'}} />
+          </Badge>
+        </Button> */}
           <Button>
             <Avatar
               sx={{ width: 30, height: 30 }}

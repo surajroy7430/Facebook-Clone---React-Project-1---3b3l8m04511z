@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Profile.css";
+import "./styles/Profile.css";
 import { Box, Typography, Avatar, ThemeProvider, createTheme, Divider } from "@mui/material";
 import Navbar from "../Navbar/Navbar";
 import LeftSidebar from "../Asides/LeftSidebar";
@@ -29,41 +29,41 @@ const UsersProfile = () => {
 
     useEffect(() => {
         const fetchUserProfile = async () => {
-          try {
-            const data = await viewUserProfile(id, token);
-            setUserProfileData(data);
-            console.log(data);
-          } catch (error) {
-            console.error("Error fetching user profile:", error);
-          }
+            try {
+              const data = await viewUserProfile(id, token);
+              setUserProfileData(data);
+              console.log(data);
+            } catch (error) {
+              console.error("Error fetching user profile:", error);
+            }
         };
     
         fetchUserProfile();
-      }, [id, token]);
+    }, [id, token]);
 
-      const {name, address, gender, email, phone, profileImage, education, workExperience} = userProfileData || {};
+    const { name, address, gender, email, phone, profileImage, education, workExperience } = userProfileData || {};
 
     useEffect(() => {
         const fetchData = async() => {
         try {
-          const usersData = await FetchPosts(limit);
-    
-          const filteredUsers = usersData.reduce((accumulator, currentUser) => {
-            if (!accumulator[currentUser.author.name]) {
-              accumulator[currentUser.author.name] = currentUser;
-            }
-            return accumulator;
-          }, {});
-    
-          setUsers(Object.values(filteredUsers));
-          // console.log('filteredUsers', filteredUsers);
+            const usersData = await FetchPosts(limit);
+            
+            const filteredUsers = usersData.reduce((accumulator, currentUser) => {
+                if (!accumulator[currentUser.author.name]) {
+                    accumulator[currentUser.author.name] = currentUser;
+                }
+                return accumulator;
+            }, {});
+          
+            setUsers(Object.values(filteredUsers));
+            // console.log('filteredUsers', filteredUsers);
         } catch (error) {
-          console.log("Error: ", error);
+            console.log("Error: ", error);
         }
     }
 
-    fetchData();
-  }, [])
+        fetchData();
+    }, [])
 
   return (
     <ThemeProvider theme={customTheme}>
@@ -102,6 +102,7 @@ const UsersProfile = () => {
                                 </Typography>
                             </div>
                         </div>
+                        
                         <Divider sx={{marginTop: '20px', marginBottom: '10px'}} />
                         <div className="profileRightBottom">
                             <Box className='profileSidebar'>

@@ -8,14 +8,14 @@ const configByIdAndBody = getHeaderWithProjectIDAndBody();
 //posts
 export const FetchPosts = async(limit) => {
   try {
-      const res = await axios.get(`${BASE_URL}/facebook/post?limit=${limit}`, 
-        configById
-      )
+    const res = await axios.get(`${BASE_URL}/facebook/post?limit=${limit}`, 
+      configById
+    )
       
-      return res.data.data;
+    return res.data.data;
   }
   catch (error) {
-      throw error.response.data.message;
+    throw error.response.data.message;
   }
 };
 
@@ -23,15 +23,15 @@ export const FetchPosts = async(limit) => {
 export const loginAuth = async(userInfo) => {
   userInfo.appType = 'facebook';
   try {
-      const res = await axios.post(`${BASE_URL}/user/login`, 
-        userInfo, 
-        configByIdAndBody
-      )
+    const res = await axios.post(`${BASE_URL}/user/login`, 
+      userInfo, 
+      configByIdAndBody
+    )
       
-      return res.data;
+    return res.data;
   }
   catch (error) {
-      throw error.response.data.message;
+    throw error.response.data.message;
   }
 };
 
@@ -39,93 +39,96 @@ export const loginAuth = async(userInfo) => {
 export const signupAuth = async (userInfo, navigate) => {
   userInfo.appType = 'facebook';
   try {
-      const res = await axios.post(`${BASE_URL}/user/signup`, 
-        userInfo, 
-        configByIdAndBody
-      );
-      const {name, email} = res.data.data.user
-      console.log({Name: name, Email: email});
+    const res = await axios.post(`${BASE_URL}/user/signup`, 
+      userInfo, 
+      configByIdAndBody
+    );
+    const {name, email} = res.data.data.user
+    console.log({Name: name, Email: email});
 
-      if(res.data.token) {
-          localStorage.setItem('authToken', res.data.token);
-          localStorage.setItem('userInfo', JSON.stringify(res.data.data.user));
-
-          navigate('/login');
-      }
+    if(res.data.token) {
+      localStorage.setItem('authToken', res.data.token);
+      localStorage.setItem('userInfo', JSON.stringify(res.data.data.user));
+      navigate('/login');
+    }
   } catch (error) {
-      throw error.response.data.message;
+    throw error.response.data.message;
   }
 };
 
 // Function to like a post
 export const PostLikeApi = async(postId, token) => {
   try {
-      const res = await axios.post(
-        `${BASE_URL}/facebook/like/${postId}`, 
-        getAuthHeaderConfig(token)
-      )
+    const res = await axios.post(
+      `${BASE_URL}/facebook/like/${postId}`, 
+      getAuthHeaderConfig(token)
+    )
       
-      return res.data.data;
+    return res.data.data;
   }
   catch (error) {
-      throw error.response.data.message;
+    throw error.response.data.message;
   }
 };
 
 // Function to create a page
 export const createPageApi = async(pageData, token) => {
   try {
-      const res = await axios.post(
-        `${BASE_URL}/facebook/channel`,
-        pageData, 
-        getAuthHeaderConfig(token)
-      )
+    const res = await axios.post(
+      `${BASE_URL}/facebook/channel`,
+      pageData, 
+      getAuthHeaderConfig(token)
+    )
       
-      return res.data.data;
+    return res.data.data;
   }
   catch (error) {
-      throw error.response.data.message;
+    throw error.response.data.message;
   }
 };
+
+// Function to create posts
 export const createPostsApi = async(postData, token) => {
   try {
-      const res = await axios.post(
-        `${BASE_URL}/facebook/post`,
-        postData,
-        getAuthHeaderConfig(token)
-      )
+    const res = await axios.post(
+      `${BASE_URL}/facebook/post`,
+      postData,
+      getAuthHeaderConfig(token)
+    )
       
-      return res.data.data;
+    return res.data.data;
   }
   catch (error) {
-      throw error.response.data.message;
+    throw error.response.data.message;
   }
 };
 
+// Function to delete posts
 export const deletePostsApi = async(postId, token) => {
   try {
-      const res = await axios.delete(
-        `${BASE_URL}/facebook/post/${postId}`,
-        getAuthHeaderConfig(token)
-      )
+    const res = await axios.delete(
+      `${BASE_URL}/facebook/post/${postId}`,
+      getAuthHeaderConfig(token)
+    )
       
-      return res.data.data;
+    return res.data.data;
   }
   catch (error) {
-      throw error.response.data.message;
+    throw error.response.data.message;
   }
 };
 
+//function to get comments
 export const fetchComments = async(postId, authToken) => {
   try {
-      const res = await axios.get(`${BASE_URL}/facebook/post/${postId}/comments`, 
-        getAuthHeaderConfig(authToken)
-      )
+    const res = await axios.get(`${BASE_URL}/facebook/post/${postId}/comments`, 
+      getAuthHeaderConfig(authToken)
+    )
       
-      return res.data.data;
+    return res.data.data;
   }
   catch (error) {
-      throw error.response.data.message;
+    throw error.response.data.message;
   }
 };
 
@@ -144,17 +147,17 @@ export const searchApi = async (searchTerm, field) => {
 
 export const viewUserProfile = async(userId, authToken) => {
   try {
-      const res = await axios.get(`${BASE_URL}/facebook/user/${userId}`, 
-        getAuthHeaderConfig(authToken)
-      )
+    const res = await axios.get(`${BASE_URL}/facebook/user/${userId}`, 
+      getAuthHeaderConfig(authToken)
+    )
       
-      return res.data.data;
+    return res.data.data;
   }
   catch (error) {
-      throw error.response.data.message;
+    throw error.response.data.message;
   }
 };
-///
+
 
 
 

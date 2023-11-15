@@ -41,6 +41,7 @@ export const AuthStateContext = ({ children }) => {
         setUser(null);
         setIsLoggedIn(false);
 
+        // Remove the authentication token and user info from localStorage
         localStorage.removeItem('authToken');
         localStorage.removeItem('userInfo');
         navigate('/login');

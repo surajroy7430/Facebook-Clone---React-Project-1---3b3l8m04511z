@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./PageData.css";
-import { Box, Typography, Avatar, Divider, ThemeProvider, createTheme, useMediaQuery, useTheme, Tabs, Tab, Stack } from "@mui/material";
+import { Box, 
+    Typography, 
+    Avatar, 
+    Divider, 
+    ThemeProvider, 
+    createTheme, 
+    useMediaQuery, 
+    useTheme, 
+    Tabs, 
+    Tab, 
+    Stack 
+} from "@mui/material";
 import Navbar from "../Navbar/Navbar";
 import { useAuth } from "../../utils/AuthStateContext";
 import { theme as customTheme } from "../../styles/theme";
-import { Link } from "react-router-dom";
-import Posts from "../Posts/Posts";
 import SkeletonLoader from "../Loader/SkeletonLoader";
 import LeftSidebar from "../Asides/LeftSidebar";
 
@@ -14,7 +23,7 @@ const PageData = () => {
     const [tabValue, setTabValue] = useState(0);
     const theme = useTheme();
     const isMD = useMediaQuery(theme.breakpoints.down('md'));
-    const storedTheme = localStorage.getItem("theme") || "light";
+    const storedTheme = sessionStorage.getItem("theme") || "light";
     const [mode, setMode] = useState(storedTheme);
 
     const darkTheme = createTheme({
@@ -24,7 +33,7 @@ const PageData = () => {
     });
 
     useEffect(() => {
-        localStorage.setItem("theme", mode);
+        sessionStorage.setItem("theme", mode);
     }, [mode]);
 
     const topTabs = [
@@ -89,14 +98,14 @@ const PageData = () => {
                           onChange={(event, newValue) => setTabValue(newValue)}
                           sx={{marginLeft: '150px', marginRight: 'auto'}}
                         >
-                          {topTabs.map(tab => (
-                              <Tab 
-                                  key={tab.id}
-                                  LinkComponent={Link} 
-                                  to={tab.link}
-                                  label={tab.name}
-                              />
-                          ))}
+                            {topTabs.map(tab => (
+                                <Tab 
+                                    key={tab.id}
+                                    LinkComponent={Link} 
+                                    to={tab.link}
+                                    label={tab.name}
+                                />
+                            ))}
                         </Tabs>
                     )}
                 </Box>

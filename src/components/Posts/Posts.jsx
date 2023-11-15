@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import './Posts.css';
 import {
   Avatar,
@@ -18,14 +18,12 @@ import {
   ListItem,
   ListItemText,
   Input,
-  Modal,
   Box,
   Dialog,
 } from "@mui/material";
 import { Close, ModeCommentOutlined, Share, ThumbUp, ThumbUpOutlined } from "@mui/icons-material";
 import { useAuth } from "../../utils/AuthStateContext";
 import { deletePostsApi, fetchComments, viewUserProfile } from "../../utils/APIs";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const Posts = (props) => {
@@ -131,6 +129,7 @@ const Posts = (props) => {
           {comment > 0 ? `${comment} comments` : null}
         </Typography>
       </CardContent>
+
       {like || comment > 0 ? <Divider /> : null }
       <CardActions sx={{justifyContent: 'space-between'}}>
         <Button aria-label="like" onClick={handleLikes}>
@@ -170,37 +169,37 @@ const Posts = (props) => {
           </List>
         </Box>
       </Dialog>
-        {isCommenting && (
-          <CardContent>
-            <Typography variant="div" style={{ margin: "5px 0", display: 'flex' }}>
-              <Input
-                value={newComment}
-                onChange={handleCommentInputChange}
-                placeholder="Add a comment..."
-                fullWidth
-              />
-              <Button onClick={handleAddComment} variant="contained" color="primary" style={{ marginTop: "10px" }}>
-                Add
-              </Button>
-            </Typography>
-          </CardContent>
-        )}
-        {commentList.length > 0 && (
-          <CardContent>
-            <Divider sx={{marginBottom: '5px'}} />
-            <List sx={{marginLeft: '15px'}}>
-              {commentList.map((comment, i) => (
-                <ListItem key={i}>
-                  <Avatar src={user && user.profileImage} alt=''  />
-                  <ListItemText sx={{marginLeft: '10px'}}>
-                    <Typography sx={{fontWeight: '600'}}>{user && user.name}</Typography>
-                    <Typography>{comment}</Typography>
-                  </ListItemText>
-                </ListItem>
-              ))}
-            </List>
-          </CardContent>
-        )}
+      {isCommenting && (
+        <CardContent>
+          <Typography variant="div" style={{ margin: "5px 0", display: 'flex' }}>
+            <Input
+              value={newComment}
+              onChange={handleCommentInputChange}
+              placeholder="Add a comment..."
+              fullWidth
+            />
+            <Button onClick={handleAddComment} variant="contained" color="primary" style={{ marginTop: "10px" }}>
+              Add
+            </Button>
+          </Typography>
+        </CardContent>
+      )}
+      {commentList.length > 0 && (
+        <CardContent>
+          <Divider sx={{marginBottom: '5px'}} />
+          <List sx={{marginLeft: '15px'}}>
+            {commentList.map((comment, i) => (
+              <ListItem key={i}>
+                <Avatar src={user && user.profileImage} alt=''  />
+                <ListItemText sx={{marginLeft: '10px'}}>
+                  <Typography sx={{fontWeight: '600'}}>{user && user.name}</Typography>
+                  <Typography>{comment}</Typography>
+                </ListItemText>
+              </ListItem>
+            ))}
+          </List>
+        </CardContent>
+      )}
     </Card>
   );
 };

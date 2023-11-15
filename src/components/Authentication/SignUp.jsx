@@ -81,10 +81,10 @@ const SignUp = () => {
         password: '',
         gender: '',
       })
-  } catch (error) {
+    } catch (error) {
       // console.error(error);
       toast.error(error);
-  }
+    }
   }
 
   return (
@@ -97,9 +97,9 @@ const SignUp = () => {
         />
       </div>
       <Grid container justifyContent="center" className="signup-main">
-      <Grid item xs={12} sm={8} md={6} lg={4}>
-        <Card elevation={4} className="signup-card">
-          <CardContent>
+        <Grid item xs={12} sm={8} md={6} lg={4}>
+          <Card elevation={4} className="signup-card">
+            <CardContent>
               <Typography variant="h5" style={{fontWeight: 'bold'}}>Create a new account</Typography>
               <Typography variant="subtitle1">It's quick and easy.</Typography>
               <Divider style={{margin: '15px 0'}} />
@@ -121,7 +121,7 @@ const SignUp = () => {
                     </FormControl>
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                  <FormControl fullWidth variant="outlined">
+                    <FormControl fullWidth variant="outlined">
                       <Input
                         id="lastName"
                         name="lastName"
@@ -136,7 +136,7 @@ const SignUp = () => {
                     </FormControl>
                   </Grid>
                   <Grid item xs={12}>
-                  <FormControl fullWidth variant="outlined">
+                    <FormControl fullWidth variant="outlined">
                       <Input
                         id="email"
                         name="email"
@@ -151,7 +151,7 @@ const SignUp = () => {
                     </FormControl>
                   </Grid>
                   <Grid item xs={12}>
-                  <FormControl fullWidth variant="outlined">
+                    <FormControl fullWidth variant="outlined">
                       <Input
                         id="password"
                         name="password"
@@ -170,49 +170,49 @@ const SignUp = () => {
                     <Grid container spacing={1}>
                       <Grid item xs={4}>
                         <FormControl fullWidth variant="outlined">
-                        <InputLabel>Day</InputLabel>
-                        <Select
-                        label="Day"
-                        name="selectedDay"
-                        value={selectedDay}
-                        onChange={(e) => setSelectedDay(e.target.value)}
-                      >
-                        {generateDays(selectedMonth, selectedYear)}
-                      </Select>
+                          <InputLabel>Day</InputLabel>
+                          <Select
+                            label="Day"
+                            name="selectedDay"
+                            value={selectedDay}
+                            onChange={(e) => setSelectedDay(e.target.value)}
+                          >
+                            {generateDays(selectedMonth, selectedYear)}
+                          </Select>
                         </FormControl>
                       </Grid>
                       <Grid item xs={4}>
                         <FormControl fullWidth variant="outlined">
-                        <InputLabel>Month</InputLabel>
-                        <Select
-                        label="Month"
-                        name="selectedMonth"
-                        value={selectedMonth}
-                        onChange={(e) => setSelectedMonth(e.target.value)}
-                      >
-                        {monthNames.map((monthName, i) => (
-                          <MenuItem key={i} value={i}>
-                            {monthName}
-                          </MenuItem>
-                        ))}
-                      </Select>
+                          <InputLabel>Month</InputLabel>
+                          <Select
+                            label="Month"
+                            name="selectedMonth"
+                            value={selectedMonth}
+                            onChange={(e) => setSelectedMonth(e.target.value)}
+                          >
+                            {monthNames.map((monthName, i) => (
+                              <MenuItem key={i} value={i}>
+                                {monthName}
+                              </MenuItem>
+                            ))}
+                          </Select>
                         </FormControl>
                       </Grid>
                       <Grid item xs={4}>
                         <FormControl fullWidth variant="outlined">
-                        <InputLabel>Year</InputLabel>
-                        <Select
-                        label="Year"
-                        name="selectedYear"
-                        value={selectedYear}
-                        onChange={(e) => setSelectedYear(e.target.value)}
-                      >
-                        {Array.from({ length: 2018 - 1970 + 1 }, (_, index) => 1970 + index).map((year) => (
-                          <MenuItem key={year} value={year}>
-                            {year}
-                          </MenuItem>
-                        ))}
-                      </Select>
+                          <InputLabel>Year</InputLabel>
+                          <Select
+                            label="Year"
+                            name="selectedYear"
+                            value={selectedYear}
+                            onChange={(e) => setSelectedYear(e.target.value)}
+                          >
+                            {Array.from({ length: 2018 - 1970 + 1 }, (_, index) => 1970 + index).map((year) => (
+                              <MenuItem key={year} value={year}>
+                                {year}
+                              </MenuItem>
+                            ))}
+                          </Select>
                         </FormControl>
                       </Grid>
                     </Grid>
@@ -220,34 +220,34 @@ const SignUp = () => {
                   <Grid item xs={12}>
                     <InputLabel style={{textAlign: 'left'}}>Gender</InputLabel>
                     <FormControl fullWidth variant="outlined">
-                        <RadioGroup
-                          row
-                          name="gender"
-                          value={userInfo.gender}
-                          onChange={handleInputChange}
-                        >
-                          <Grid item xs={4}>
+                      <RadioGroup
+                        row
+                        name="gender"
+                        value={userInfo.gender}
+                        onChange={handleInputChange}
+                      >
+                        <Grid item xs={4}>
                           <FormControlLabel
                             value="female"
                             control={<Radio color="primary" />}
                             label="Female"
                           />
-                          </Grid>
-                          <Grid item xs={4}>
+                        </Grid>
+                        <Grid item xs={4}>
                           <FormControlLabel
                             value="male"
                             control={<Radio color="primary" />}
                             label="Male"
                           />
-                          </Grid>
-                          <Grid item xs={4}>
+                        </Grid>
+                        <Grid item xs={4}>
                           <FormControlLabel
                             value="other"
                             control={<Radio color="primary" />}
                             label="Other"
                           />
-                          </Grid>
-                        </RadioGroup>
+                        </Grid>
+                      </RadioGroup>
                     </FormControl>
                   </Grid>
                   <Typography variant='div' className='policy'>
@@ -282,10 +282,10 @@ const SignUp = () => {
                   </Grid>
                 </Grid>
               </form>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </Grid>
       </Grid>
-    </Grid>
     </div>
   )
 }

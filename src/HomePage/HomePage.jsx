@@ -7,7 +7,7 @@ import SkeletonLoader from '../components/Loader/SkeletonLoader';
 import { theme as customTheme } from '../styles/theme';
 
 const HomePage = () => {
-  const storedTheme = localStorage.getItem("theme") || "light";
+  const storedTheme = sessionStorage.getItem("theme") || "light";
   const [mode, setMode] = useState(storedTheme);
 
   const darkTheme = createTheme({
@@ -17,7 +17,7 @@ const HomePage = () => {
   });
 
   useEffect(() => {
-    localStorage.setItem("theme", mode);
+    sessionStorage.setItem("theme", mode);
   }, [mode]);
 
   return (

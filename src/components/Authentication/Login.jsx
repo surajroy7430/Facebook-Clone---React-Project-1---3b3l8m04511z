@@ -1,7 +1,18 @@
 import React, { useState } from 'react'
 import './styles/Login.css'
 import { Link, useNavigate } from 'react-router-dom'
-import { Card, CardContent, TextField, Button, Container, Typography, Grid, Divider, FormControl, InputLabel, Input, InputAdornment, IconButton } from '@mui/material';
+import { 
+  Card, 
+  CardContent, 
+  Button, 
+  Typography, 
+  Grid, 
+  Divider, 
+  FormControl, 
+  Input, 
+  InputAdornment, 
+  IconButton 
+} from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useAuth } from '../../utils/AuthStateContext';
 import { loginAuth } from '../../utils/APIs';
@@ -10,16 +21,16 @@ import { toast } from 'react-toastify';
 const Login = () => {
   const { loginUser } = useAuth();
   const [userInfo, setUserInfo] = useState({
-      email: '', 
-      password: '',
+    email: '', 
+    password: '',
   });
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUserInfo({ 
-        ...userInfo, 
-        [name]: value 
+      ...userInfo, 
+      [name]: value 
     });
   }
 
@@ -33,8 +44,8 @@ const Login = () => {
       navigate('/');
 
     } catch (error) {
-        // console.error(error);
-        toast.error(error);
+      // console.error(error);
+      toast.error(error);
     }
   }
   
@@ -48,20 +59,21 @@ const Login = () => {
     
   return (
     <div className="login-container">
-        <div className="login-content">
-          <img
-            className="logo"
-            src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg"
-            alt="facebook_logo"
-          />
-        </div>
-        <Card elevation={4} className="login-card">
+      <div className="login-content">
+        <img
+          className="logo"
+          src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg"
+          alt="facebook_logo"
+        />
+      </div>
+      <Card elevation={4} className="login-card">
         <CardContent>
           <Typography className="subtitle">
             Log in to Facebook
           </Typography>
+
           <form className="form" onSubmit={handleLogin}>
-          <FormControl fullWidth required variant="outlined" margin="normal">
+            <FormControl fullWidth required variant="outlined" margin="normal">
               <Input
                 id="email"
                 type="email"
@@ -117,7 +129,7 @@ const Login = () => {
           </Grid>
           
           <Divider>OR</Divider>
-
+                
           <Grid container justifyContent="center" className='to-signup'>
             <Grid>
               <Link to='/signup'>
@@ -125,7 +137,7 @@ const Login = () => {
               </Link>
             </Grid>
           </Grid>
-      </CardContent>
+        </CardContent>
       </Card>
     </div>
   )

@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './styles/App.css'
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from './utils/AuthStateContext';
 import HomePage from './HomePage/HomePage';
 import Login from './components/Authentication/Login';
 import SignUp from './components/Authentication/SignUp';
-import { useAuth } from './utils/AuthStateContext';
 import Profile from './components/ProfilePage/Profile';
-import { ToastContainer } from 'react-toastify';
 import SearchResults from './components/Asides/SearchResults';
 import UsersProfile from './components/ProfilePage/UsersProfile';
 // import PageData from './components/PagesCreation/PageData';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   const { user } = useAuth();
